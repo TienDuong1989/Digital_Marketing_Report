@@ -232,17 +232,6 @@ td.center{text-align:center}
   .grid2,.grid2-wide,.grid3{grid-template-columns:1fr}
   .sources-layout{grid-template-columns:1fr}
 }
-
-@media print {
-  #pw-overlay{display:none!important}
-  .topbar{position:relative;border-bottom:2px solid #0D1B2E}
-  .tb-filter,.tb-ai{display:none}
-  .page{padding:12px 24px}
-  .card{box-shadow:none;break-inside:avoid}
-  .mcard{break-inside:avoid}
-  body{font-size:11px}
-  .section-gap{margin-top:16px}
-}
 </style>
 </head>
 <body>
@@ -345,7 +334,10 @@ function checkPw(){
       <span style="font-size:14px;font-weight:700;color:#0D1B2E;letter-spacing:-.01em">Orient Software</span>
     </div>
     <div class="tb-sep"></div>
-    <span class="tb-sub">Digital Marketing — Monthly Report</span>
+    <a href="../../" title="Digital Marketing Report Hub" style="display:flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color .15s" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--muted)'">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L7 2l5.5 5M2.5 6v5.5h3v-3.5h3v3.5h3V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Monthly Report
+    </a>
   </div>
   <div class="tb-right">
     <div class="tb-period">
@@ -411,6 +403,11 @@ function checkPw(){
 
 <!-- Hàng 2: Organic Search | Total Paid March -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+  <!-- Organic Search Users -->
+</div>
+
+<!-- Hàng 2: Organic Search | Total Paid March -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
   <div class="mcard" style="padding:22px 24px">
     <div class="mcard-label">Organic Search Users <span style="font-size:10px;color:#94A3B8;font-weight:400">(GA4)</span></div>
     <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">1,892</div>
@@ -446,6 +443,13 @@ function checkPw(){
 
 <!-- Hàng 3: Total Leads Q1 | Total Paid Q1 -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+
+
+  <!-- Total Paid Q1 -->
+</div>
+
+<!-- Hàng 3: Total Leads Q1 | Total Paid Q1 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
   <div class="mcard" style="padding:18px 20px">
     <div class="mcard-label">Total Leads Q1 <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
     <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">77</div>
@@ -473,6 +477,18 @@ function checkPw(){
       <span style="font-size:11px;font-weight:700;color:#667085">$3,040.60 / ~$9k Q1 budget</span>
     </div>
   </div>
+</div>
+
+<!-- Hàng 4: Traffic Value | Domain Rating | Bounce Rate | Tech SEO -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:16px">
+
+
+
+
+
+
+
+</div>
 </div>
 
 <!-- Hàng 4: Traffic Value | Domain Rating | Bounce Rate | Tech SEO -->
@@ -562,11 +578,11 @@ function checkPw(){
       <div class="donut-area">
         <div class="donut-wrap"><canvas id="ch-donut"></canvas></div>
         <div class="donut-legend">
-          <div class="dl-item"><span class="dl-dot" style="background:#7C3AED"></span>Organic Search: 42.4%</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#0E7490"></span>Direct: 33.2%</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#059669"></span>Organic Social: 16.9%</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#F97316"></span>Referral: 5.6%</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#94A3B8"></span>Unassigned: 5.1%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#7C3AED"></span>Organic Search: 42.2%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#0E7490"></span>Direct: 33.3%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#059669"></span>Organic Social: 16.3%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#F97316"></span>Referral: 6.3%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#94A3B8"></span>Unassigned: 4.9%</div>
           <div class="dl-item"><span class="dl-dot" style="background:#EAB308"></span>Email: 0.02%</div>
         </div>
       </div>
@@ -667,6 +683,7 @@ function checkPw(){
 <!-- ══ CPL CARD ══ -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
 
+  <!-- Where do 15 leads come from -->
   <div class="card">
     <div class="card-hdr">
       <div>
@@ -679,35 +696,35 @@ function checkPw(){
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
           <span style="width:9px;height:9px;border-radius:50%;background:#7C3AED;flex-shrink:0;display:inline-block"></span>
           <span style="font-size:12px;color:#344054;flex:1">Organic Search</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:100%;height:100%;background:#7C3AED;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#7C3AED;min-width:20px;text-align:right">9</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">47.4%</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:46.7%;height:100%;background:#7C3AED;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#7C3AED;min-width:20px;text-align:right">7</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">46.7%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="width:9px;height:9px;border-radius:50%;background:#059669;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Organic Social</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:26.7%;height:100%;background:#059669;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#059669;min-width:20px;text-align:right">4</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">26.7%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
           <span style="width:9px;height:9px;border-radius:50%;background:#0E7490;flex-shrink:0;display:inline-block"></span>
           <span style="font-size:12px;color:#344054;flex:1">Direct</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:44.4%;height:100%;background:#0E7490;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#0E7490;min-width:20px;text-align:right">4</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">21.1%</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
-          <span style="width:9px;height:9px;border-radius:50%;background:#F97316;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:12px;color:#344054;flex:1">Referral</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:33.3%;height:100%;background:#F97316;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#F97316;min-width:20px;text-align:right">3</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">15.8%</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:20%;height:100%;background:#0E7490;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#0E7490;min-width:20px;text-align:right">3</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">20.0%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
-          <span style="width:9px;height:9px;border-radius:50%;background:#059669;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:12px;color:#344054;flex:1">Organic Social</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:11.1%;height:100%;background:#059669;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#059669;min-width:20px;text-align:right">1</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">5.3%</span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#F97316;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Referral</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:6.7%;height:100%;background:#F97316;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#F97316;min-width:20px;text-align:right">1</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">6.7%</span>
         </div>
       </div>
       <div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #059669">
         <div style="font-size:11.5px;color:#014737;font-weight:600">📌 Key insight</div>
-        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Organic Search delivers most leads (9, 47.4%) — SEO recovery directly impacts pipeline. Referral CVR is 1.06% — highest of all channels (3 leads from 284 users). Priority: recover organic traffic + scale referral.</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Organic Search delivers most leads (7) — SEO recovery directly impacts pipeline. Organic Social converting well (4 leads from 723 users = 0.55% CVR). Priority: recover organic traffic first.</div>
       </div>
     </div>
   </div>
@@ -754,7 +771,7 @@ function checkPw(){
         </div>
       </div>
       <div style="margin-top:10px;padding:9px 12px;background:#FFFBEB;border-radius:8px;border-left:3px solid #F59E0B">
-        <div style="font-size:11px;color:#78350F;line-height:1.5">⚠ Feb CVR spike (0.943%) due to traffic drop — fewer users but leads held. Mar CVR (0.42%) dropped as Core Update cut both traffic and leads. Q2 goal: restore traffic to 7,955+ users to hit CVR ~0.40%.</div>
+        <div style="font-size:11px;color:#78350F;line-height:1.5">⚠ Feb CVR spike (0.943%) due to traffic drop — fewer users but leads held. Mar CVR (0.379%) dropped as Core Update cut both traffic and leads. Q2 goal: restore traffic to 7,955+ users to hit CVR ~0.40%.</div>
       </div>
     </div>
   </div>
@@ -1058,7 +1075,7 @@ function checkPw(){
           <td><strong style="color:#0E7490">Q1 Total</strong></td>
           <td class="num" style="color:#0E7490;font-weight:700">14,401</td>
           <td></td>
-          <td class="num" style="color:#059669;font-weight:700">77 leads</td>
+          <td class="num" style="color:#059669;font-weight:700">75 leads</td>
           <td></td>
           <td class="num-muted">—</td>
           <td style="font-size:11px;color:var(--muted)">Q2 target: 32/mo · ~97 cumulative</td>
@@ -1363,13 +1380,13 @@ Chart.defaults.color = '#667085';
 const gridColor = '#F2F4F7';
 
 const months3 = ['Jan 2026','Feb 2026','Mar 2026'];
-const users3   = [6629, 3286, 4486];
-const leads3   = [27, 31, 19];
+const users3   = [6629, 3286, 4278];
+const leads3   = [27, 31, 15];
 
 // Combined: Users bar + Leads line — 6 months shown
 // Jan–Dec 2026 full year
 const mo12 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const users12 = [6629, 3286, 4486, null, null, null, null, null, null, null, null, null];
+const users12 = [6629, 3286, 4278, null, null, null, null, null, null, null, null, null];
 const leads12 = [27, 31, 19, null, null, null, null, null, null, null, null, null];
 
 new Chart(document.getElementById('ch-combined'), {
