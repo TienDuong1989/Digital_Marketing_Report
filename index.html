@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orient Software — Digital Marketing Reports</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B2E;
+  --navy2: #1B2A4A;
+  --teal: #0E7490;
+  --teal-lt: #E0F7FA;
+  --border: #E4E7EC;
+  --text: #101828;
+  --text2: #344054;
+  --muted: #667085;
+  --faint: #F9FAFB;
+  --bg: #F0F2F5;
+  --white: #FFFFFF;
+  --red: #E8321A;
+  --green: #027A48;
+  --green-bg: #D1FADF;
+  --amber: #B54708;
+  --amber-bg: #FEF0C7;
+  --blue-lt: #EFF8FF;
+  --r: 10px;
+  --r2: 14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--navy);
+  padding: 0 48px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.tb-left { display: flex; align-items: center; gap: 10px; }
+.tb-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+.tb-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -.01em; }
+.tb-sep { width: 1px; height: 18px; background: rgba(255,255,255,.15); }
+.tb-sub { font-size: 12px; color: rgba(255,255,255,.5); font-weight: 400; }
+.tb-right { font-size: 11px; color: rgba(255,255,255,.35); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 52px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,116,144,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(14,116,144,.15);
+  border: 1px solid rgba(14,116,144,.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #22D3EE;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.hero-label span { width: 6px; height: 6px; border-radius: 50%; background: #22D3EE; display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  max-width: 560px;
+}
+.hero h1 em { font-style: normal; color: #22D3EE; }
+.hero-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hstat { }
+.hstat-val { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+.hstat-label { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 2px; }
+
+/* ── PAGE ── */
+.page { padding: 32px 48px 60px; max-width: 1200px; }
+
+/* ── SECTION HEADER ── */
+.sec-hdr {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  margin-top: 36px;
+}
+.sec-hdr:first-child { margin-top: 0; }
+.sec-title { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: .03em; text-transform: uppercase; }
+.sec-count { font-size: 12px; color: var(--muted); }
+
+/* ── REPORT GRID ── */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+/* ── REPORT CARD ── */
+.rcard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+  box-shadow: 0 1px 2px rgba(16,24,40,.05);
+  position: relative;
+}
+.rcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16,24,40,.10);
+  border-color: #BDD7EE;
+}
+.rcard-top {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.rcard-icon {
+  width: 38px; height: 38px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.ic-monthly { background: #EFF8FF; }
+.ic-quarter { background: #D1FADF; }
+.rcard-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.b-live { background: #D1FADF; color: #027A48; }
+.b-soon { background: var(--amber-bg); color: var(--amber); }
+.b-plan { background: #F2F4F7; color: var(--muted); }
+.b-quarter { background: #EDE9FE; color: #5B21B6; }
+.rcard-body { padding: 14px 20px 18px; }
+.rcard-month {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -.01em;
+  margin-bottom: 3px;
+}
+.rcard-period {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.rcard-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.rm {
+  background: var(--faint);
+  border-radius: 7px;
+  padding: 8px 10px;
+}
+.rm-val { font-size: 15px; font-weight: 700; color: var(--navy); letter-spacing: -.01em; }
+.rm-label { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.rm-chg { font-size: 10px; font-weight: 600; margin-top: 2px; }
+.chg-up { color: var(--green); }
+.chg-dn { color: #B42318; }
+.chg-nt { color: var(--muted); }
+
+/* Empty/planned card */
+.rcard-empty .rcard-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  flex-direction: column;
+  gap: 6px;
+}
+.rcard-empty .rcard-month { font-size: 15px; color: var(--muted); font-weight: 600; }
+.rcard-empty .rcard-period { font-size: 11px; color: #D0D5DD; margin-bottom: 0; }
+
+/* Quarter card accent */
+.rcard-quarter { border-left: 3px solid #7C3AED; }
+.rcard-quarter .rcard-top { background: #FAFBFF; }
+
+/* ── COMING SOON STRIP ── */
+.coming-strip {
+  background: var(--faint);
+  border: 1px dashed var(--border);
+  border-radius: var(--r2);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.coming-strip-icon { font-size: 20px; }
+.coming-strip p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.coming-strip strong { color: var(--text2); font-weight: 600; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+}
+.footer-left { display: flex; align-items: center; gap: 8px; }
+.footer-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+
+/* ── PASSWORD ── */
+#pw-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+#pw-box {
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(13,27,46,.12);
+  padding: 44px 40px 36px;
+  width: 360px; text-align: center;
+}
+#pw-logo { display: flex; align-items: flex-end; gap: 5px; justify-content: center; margin-bottom: 14px; }
+#pw-logo-text { font-size: 30px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1; }
+#pw-logo-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red); margin-bottom: 5px; flex-shrink: 0; }
+#pw-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+#pw-sub { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+#pw-label { display: block; font-size: 11px; font-weight: 600; color: var(--text2); text-align: left; margin-bottom: 6px; letter-spacing: .03em; text-transform: uppercase; }
+#pw-input {
+  width: 100%; border: 1.5px solid #D0D5DD; border-radius: 8px;
+  padding: 10px 14px; font-size: 14px; font-family: inherit;
+  color: var(--navy); outline: none; box-sizing: border-box;
+  transition: border-color .15s;
+}
+#pw-input:focus { border-color: var(--teal); }
+#pw-btn {
+  width: 100%; margin-top: 14px;
+  background: var(--navy); color: #fff; border: none;
+  border-radius: 8px; padding: 11px;
+  font-size: 14px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: background .15s;
+}
+#pw-btn:hover { background: var(--navy2); }
+#pw-err { display: none; margin-top: 12px; font-size: 12px; color: #B42318; font-weight: 500; }
+#pw-footer { margin-top: 24px; font-size: 11px; color: #94A3B8; }
+
+@media (max-width: 768px) {
+  .topbar, .hero, .page, .footer { padding-left: 20px; padding-right: 20px; }
+  .hero h1 { font-size: 24px; }
+  .hero-stats { gap: 20px; }
+  .report-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Password Gate -->
+<div id="pw-overlay">
+  <div id="pw-box">
+    <div id="pw-logo">
+      <span id="pw-logo-text">orient</span>
+      <span id="pw-logo-dot"></span>
+    </div>
+    <div id="pw-title">Orient Software</div>
+    <div id="pw-sub">Digital Marketing Reports · Internal Access</div>
+    <label id="pw-label" for="pw-input">Password</label>
+    <input id="pw-input" type="password" placeholder="Enter password to access" autocomplete="off"/>
+    <button id="pw-btn" onclick="checkPw()">Access →</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+    <div id="pw-footer">Confidential — Internal Use Only</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(sessionStorage.getItem('orient_auth')==='ok'){
+    document.getElementById('pw-overlay').style.display='none';
+  }
+})();
+document.getElementById('pw-input').addEventListener('keydown',function(e){
+  if(e.key==='Enter') checkPw();
+});
+function checkPw(){
+  var val = document.getElementById('pw-input').value;
+  if(val==='@Orientsoftware2026'){
+    sessionStorage.setItem('orient_auth','ok');
+    document.getElementById('pw-overlay').style.display='none';
+  } else {
+    document.getElementById('pw-err').style.display='block';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-input').focus();
+    document.getElementById('pw-input').style.borderColor='#B42318';
+    setTimeout(function(){ document.getElementById('pw-input').style.borderColor='#D0D5DD'; }, 1500);
+  }
+}
+</script>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-dot"></div>
+    <span class="tb-name">Orient Software</span>
+    <div class="tb-sep"></div>
+    <span class="tb-sub">Digital Marketing — Monthly Report</span>
+  </div>
+  <div class="tb-right">Confidential · Internal Use Only</div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">
+    <span></span>
+    2026 · Active
+  </div>
+  <h1>Digital Marketing<br><em>Report Hub</em></h1>
+  <p class="hero-sub">Monthly performance reports, quarterly summaries, and channel analytics for Orient Software's digital marketing team.</p>
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-val">1</div>
+      <div class="hstat-label">Reports published</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val">Q1</div>
+      <div class="hstat-label">Current quarter</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val">2026</div>
+      <div class="hstat-label">Reporting year</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="page">
+
+  <!-- Q1 2026 -->
+  <div class="sec-hdr">
+    <span class="sec-title">Q1 2026 — March</span>
+    <span class="sec-count">1 of 1 published</span>
+  </div>
+
+  <div class="report-grid">
+
+    <!-- March — LIVE -->
+    <a class="rcard" href="2026/March/">
+      <div class="rcard-top">
+        <div class="rcard-icon ic-monthly">📊</div>
+        <span class="rcard-badge b-live">✓ Published</span>
+      </div>
+      <div class="rcard-body">
+        <div class="rcard-month">March 2026</div>
+        <div class="rcard-period">1 – 31 March 2026 · GA4 · Ahrefs · CRM</div>
+        <div class="rcard-metrics">
+          <div class="rm">
+            <div class="rm-val">4,486</div>
+            <div class="rm-label">Total Users</div>
+            <div class="rm-chg chg-up">↑ 36.5% vs Feb</div>
+          </div>
+          <div class="rm">
+            <div class="rm-val">19</div>
+            <div class="rm-label">Leads Generated</div>
+            <div class="rm-chg chg-dn">↓ 38.7% vs Feb</div>
+          </div>
+          <div class="rm">
+            <div class="rm-val">0.42%</div>
+            <div class="rm-label">CVR</div>
+            <div class="rm-chg chg-nt">— vs 0.943% Feb</div>
+          </div>
+          <div class="rm">
+            <div class="rm-val">DR 59</div>
+            <div class="rm-label">Domain Rating</div>
+            <div class="rm-chg chg-up">↑ Ahead of Q2</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Q1 Summary -->
+  <div class="report-grid" style="margin-top:10px">
+    <div class="rcard rcard-quarter rcard-empty" style="cursor:default;opacity:.6">
+      <div class="rcard-top">
+        <div class="rcard-icon ic-quarter">📋</div>
+        <span class="rcard-badge b-quarter">Q1 Summary</span>
+      </div>
+      <div class="rcard-body">
+        <div class="rcard-month">Q1 2026 Summary</div>
+        <div class="rcard-period">Jan · Feb · Mar · 77 total leads · $3,040.60 spent</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 2026 -->
+  <div class="sec-hdr" style="margin-top:36px">
+    <span class="sec-title">Q2 2026 — April · May · June</span>
+    <span class="sec-count">0 of 3 published</span>
+  </div>
+
+  <div class="report-grid">
+
+    <!-- April — upcoming -->
+    <div class="rcard rcard-empty" style="cursor:default;opacity:.6">
+      <div class="rcard-top">
+        <div class="rcard-icon ic-monthly">🗓</div>
+        <span class="rcard-badge b-soon">Upcoming</span>
+      </div>
+      <div class="rcard-body">
+        <div class="rcard-month">April 2026</div>
+        <div class="rcard-period">1 – 30 April 2026</div>
+      </div>
+    </div>
+
+    <!-- May — planned -->
+    <div class="rcard rcard-empty" style="cursor:default;opacity:.4">
+      <div class="rcard-top">
+        <div class="rcard-icon ic-monthly">📄</div>
+        <span class="rcard-badge b-plan">Planned</span>
+      </div>
+      <div class="rcard-body">
+        <div class="rcard-month">May 2026</div>
+        <div class="rcard-period">1 – 31 May 2026</div>
+      </div>
+    </div>
+
+    <!-- June — planned -->
+    <div class="rcard rcard-empty" style="cursor:default;opacity:.4">
+      <div class="rcard-top">
+        <div class="rcard-icon ic-monthly">📄</div>
+        <span class="rcard-badge b-plan">Planned</span>
+      </div>
+      <div class="rcard-body">
+        <div class="rcard-month">June 2026</div>
+        <div class="rcard-period">1 – 30 June 2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Q3 & Q4 coming strip -->
+  <div class="coming-strip" style="margin-top:32px">
+    <div class="coming-strip-icon">📅</div>
+    <p><strong>Q3 & Q4 2026</strong> reports will be added here as the year progresses — July through December. Each month auto-links once published.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-dot"></div>
+    <span>Orient Software · Digital Marketing Team</span>
+  </div>
+  <span>Confidential — Internal Use Only · 2026</span>
+</div>
+
+</body>
+</html>
