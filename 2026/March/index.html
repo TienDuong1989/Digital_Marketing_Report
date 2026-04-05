@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orient Software — Digital Marketing · March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#F0F2F5;
+  --white:#FFFFFF;
+  --navy:#0D1B2E;
+  --teal:#0E7490;
+  --teal-lt:#CFFAFE;
+  --blue:#1D4ED8;
+  --border:#E4E7EC;
+  --border2:#D0D5DD;
+  --text:#101828;
+  --text2:#344054;
+  --muted:#667085;
+  --faint:#F9FAFB;
+  --red:#B42318;
+  --red-bg:#FEE4E2;
+  --green:#027A48;
+  --green-bg:#D1FADF;
+  --amber:#B54708;
+  --amber-bg:#FEF0C7;
+  --blue-bg:#EFF8FF;
+  --r:8px;
+  --r2:12px;
+  --sh:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.1);
+  --sh2:0 4px 6px -2px rgba(16,24,40,.03),0 12px 16px -4px rgba(16,24,40,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;-webkit-font-smoothing:antialiased;line-height:1.5}
+
+/* ═══ TOPBAR ═══ */
+.topbar{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:0 48px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.tb-left{display:flex;align-items:center;gap:12px}
+.tb-logo{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.tb-logo svg{width:18px;height:18px}
+.tb-name{font-size:15px;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+.tb-sep{width:1px;height:20px;background:var(--border)}
+.tb-sub{font-size:12px;color:var(--muted);font-weight:500}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-period{
+  background:var(--faint);border:1px solid var(--border2);border-radius:6px;
+  padding:5px 12px;font-size:12px;font-weight:500;color:var(--text2);
+  display:flex;align-items:center;gap:6px;
+}
+.tb-period svg{width:13px;height:13px;color:var(--muted)}
+.tb-filter{
+  background:var(--white);border:1px solid var(--border2);border-radius:6px;
+  padding:5px 12px;font-size:12px;font-weight:500;color:var(--text2);
+  display:flex;align-items:center;gap:5px;cursor:default;
+}
+.tb-ai{
+  background:linear-gradient(135deg,#0E7490,#1D4ED8);border:none;border-radius:6px;
+  padding:5px 12px;font-size:12px;font-weight:600;color:#fff;
+  display:flex;align-items:center;gap:5px;cursor:default;
+}
+
+/* ═══ PAGE ═══ */
+.page{padding:20px 48px 52px;max-width:1440px;margin:0 auto}
+
+/* ═══ ALERT ═══ */
+.alert{
+  background:#FFFBEB;border:1px solid #FDE68A;border-left:3px solid #F59E0B;
+  border-radius:var(--r);padding:10px 14px;
+  display:flex;gap:9px;align-items:flex-start;
+  margin-bottom:20px;
+}
+.alert p{font-size:11.5px;color:#78350F;line-height:1.6}
+.alert strong{color:#451A03;font-weight:600}
+
+/* ═══ SECTION ═══ */
+.section-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px;letter-spacing:-.01em}
+.section-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.section-gap{margin-top:28px}
+
+/* ═══ METRIC MINI CARDS (Coupler top style) ═══ */
+.metric-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.mcard{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r2);box-shadow:var(--sh);
+  padding:18px 20px;
+}
+.mcard-label{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.mcard-val{font-size:28px;font-weight:700;color:var(--navy);letter-spacing:-.02em;line-height:1.1;margin-bottom:5px}
+.mcard-chg{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600}
+.chg-up{color:var(--green)}.chg-dn{color:var(--red)}.chg-nt{color:var(--muted)}
+.chg-icon{font-size:10px}
+.mcard-vs{font-size:10.5px;color:var(--muted);margin-top:3px}
+
+/* ═══ GRID LAYOUTS ═══ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.grid2-wide{display:grid;grid-template-columns:2fr 1.1fr;gap:14px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px}
+
+/* ═══ CARD ═══ */
+.card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r2);box-shadow:var(--sh);overflow:hidden;
+}
+.card-hdr{
+  padding:16px 18px 0;
+  display:flex;align-items:flex-start;justify-content:space-between;
+}
+.card-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.card-sub{font-size:11px;color:var(--muted)}
+.card-menu{color:var(--muted);cursor:default;font-size:16px;line-height:1}
+.card-body{padding:12px 18px 18px}
+.chart-wrap{position:relative}
+.h200{height:210px}
+.h170{height:175px}
+.h150{height:130px}
+
+/* ═══ SOURCES DONUT ═══ */
+.sources-layout{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start;padding:16px 18px 18px}
+.donut-area{display:flex;flex-direction:column;align-items:center;gap:12px}
+.donut-wrap{position:relative;width:190px;height:190px}
+.donut-wrap canvas{width:190px!important;height:190px!important}
+.donut-legend{width:100%;display:flex;flex-direction:column;gap:6px}
+.dl-item{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}
+.dl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* ═══ TABLES ═══ */
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{
+  background:var(--faint);padding:8px 12px;
+  text-align:left;font-size:11px;font-weight:600;color:var(--muted);
+  border-bottom:1px solid var(--border);white-space:nowrap;
+  letter-spacing:.03em;text-transform:uppercase;
+}
+thead th.r{text-align:right}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;color:var(--text2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--faint)}
+.rank{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--faint);border:1px solid var(--border);
+  font-size:10px;font-weight:600;color:var(--muted);
+}
+.src-name{display:flex;align-items:center;gap:7px}
+.src-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
+.num-muted{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* Data bar (for source users) */
+.dbar-wrap{display:flex;align-items:center;gap:8px}
+.dbar-track{flex:1;height:5px;background:var(--border);border-radius:4px;overflow:hidden}
+.dbar-fill{height:100%;border-radius:4px}
+.dbar-val{min-width:42px;text-align:right;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ═══ MONTHLY TREND ═══ */
+.month-table thead th{background:#F8FAFC}
+.month-bar-wrap{display:flex;align-items:center;gap:6px}
+.month-bar{height:6px;border-radius:3px;transition:width .6s ease}
+.trend-up{color:var(--red);font-size:11px;font-weight:500}
+.trend-nt{color:var(--muted);font-size:11px}
+.trend-chg{font-size:11px;font-weight:500}
+
+/* ═══ KPI TABLE ═══ */
+.kpi-wrap{border-radius:var(--r2);overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh)}
+table.kpi{font-size:12px}
+.kpi thead th{background:#0D1B2E;color:rgba(255,255,255,.8);padding:9px 12px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-bottom:none}
+.kpi thead th.r{text-align:right}
+.kpi tbody tr:nth-child(even) td{background:#FAFBFC}
+.kpi tbody tr:hover td{background:#EFF8FF}
+.kpi td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.kpi td:first-child{width:100px;text-align:center}
+
+.ftag{display:inline-flex;align-items:center;justify-content:center;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;width:100%;box-sizing:border-box}
+.fa{background:#DBEAFE;color:#1D4ED8;border-left:3px solid #1D4ED8}
+.fen{background:#D1FADF;color:#027A48;border-left:3px solid #027A48}
+.fc{background:#FEF0C7;color:#B45309;border-left:3px solid #B45309}
+.fau{background:#EDE9FE;color:#5B21B6;border-left:3px solid #5B21B6}
+
+.pct-badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+.p-r{background:var(--red-bg);color:var(--red)}
+.p-a{background:var(--amber-bg);color:var(--amber)}
+.p-g{background:var(--green-bg);color:var(--green)}
+
+.sb{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.s-g{background:var(--green-bg);color:var(--green)}
+.s-a{background:var(--amber-bg);color:var(--amber)}
+.s-b{background:#EFF8FF;color:#026AA2}
+.s-r{background:var(--red-bg);color:var(--red)}
+
+/* ═══ CHANNEL PLAN ═══ */
+.cp-wrap{border-radius:var(--r2);overflow-x:auto;border:1px solid var(--border);box-shadow:var(--sh)}
+table.cp{font-size:11.5px;width:100%;table-layout:fixed}
+.cp thead th{background:#0D1B2E;color:rgba(255,255,255,.8);padding:9px 12px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-bottom:none;text-align:left}
+.cp thead th.c{text-align:center}
+.cp td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle;border-right:1px solid var(--border);word-wrap:break-word}
+.cp-seo{background:#D6E4F7!important}
+.cp-link{background:#D4EDDA!important}
+.cp-content{background:#FFF3CD!important}
+.cp-paid{background:#FFE0D6!important}
+.cp-funnel{background:#E8D5F5!important}
+.cp td:last-child{border-right:none}
+.cp tbody tr:nth-child(even) td{background:#FAFBFC}
+table.cp tbody td.cp-seo{background:#D6E4F7!important}
+table.cp tbody td.cp-link{background:#D4EDDA!important}
+table.cp tbody td.cp-content{background:#FFF3CD!important}
+table.cp tbody td.cp-paid{background:#FFE0D6!important}
+table.cp tbody td.cp-funnel{background:#E8D5F5!important}
+.cp tbody tr:hover td{background:#EFF8FF}
+.ch-cell{display:flex;align-items:center;justify-content:center;padding:3px 8px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:.02em;text-align:center;min-height:24px}
+.q-run{background:#D1FADF;color:#027A48;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;display:inline-block}
+.q-q2{background:#DBEAFE;color:#1D4ED8;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;display:inline-block}
+.q-rev{background:#FEF0C7;color:#B45309;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;display:inline-block}
+.q-no{color:#D0D5DD;font-size:14px;text-align:center;display:block}
+td.center{text-align:center}
+
+/* ═══ FOOTER ═══ */
+.footer{text-align:center;font-size:10.5px;color:var(--muted);padding:16px 0 0;font-style:italic}
+
+@media(max-width:1100px){
+  .metric-row{grid-template-columns:1fr 1fr}
+  .grid2,.grid2-wide,.grid3{grid-template-columns:1fr}
+  .sources-layout{grid-template-columns:1fr}
+}
+
+@media print {
+  #pw-overlay{display:none!important}
+  .topbar{position:relative;border-bottom:2px solid #0D1B2E}
+  .tb-filter,.tb-ai{display:none}
+  .page{padding:12px 24px}
+  .card{box-shadow:none;break-inside:avoid}
+  .mcard{break-inside:avoid}
+  body{font-size:11px}
+  .section-gap{margin-top:16px}
+}
+</style>
+</head>
+<body>
+<style>
+#pw-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:#F0F2F5;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+#pw-box{
+  background:#fff;border-radius:16px;
+  box-shadow:0 8px 40px rgba(13,27,46,.12);
+  padding:44px 40px 36px;
+  width:360px;text-align:center;
+}
+#pw-logo{
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  background:transparent;
+  width:auto;height:auto;
+}
+#pw-title{font-size:18px;font-weight:700;color:#0D1B2E;margin-bottom:4px;letter-spacing:-.01em}
+#pw-sub{font-size:12px;color:#667085;margin-bottom:28px}
+#pw-label{display:block;font-size:11px;font-weight:600;color:#344054;text-align:left;margin-bottom:6px;letter-spacing:.03em;text-transform:uppercase}
+#pw-input{
+  width:100%;border:1.5px solid #D0D5DD;border-radius:8px;
+  padding:10px 14px;font-size:14px;font-family:inherit;
+  color:#0D1B2E;outline:none;box-sizing:border-box;
+  transition:border-color .15s;
+}
+#pw-input:focus{border-color:#0E7490;}
+#pw-btn{
+  width:100%;margin-top:14px;
+  background:#0D1B2E;color:#fff;border:none;
+  border-radius:8px;padding:11px;
+  font-size:14px;font-weight:600;font-family:inherit;
+  cursor:pointer;letter-spacing:.01em;
+  transition:background .15s;
+}
+#pw-btn:hover{background:#1B2A4A}
+#pw-err{
+  display:none;margin-top:12px;
+  font-size:12px;color:#B42318;font-weight:500;
+}
+#pw-footer{margin-top:24px;font-size:11px;color:#94A3B8}
+</style>
+
+<div id="pw-overlay">
+  <div id="pw-box">
+    <div id="pw-logo" style="background:transparent;width:auto;height:auto;border-radius:0;margin:0 auto 14px;display:flex;align-items:center;justify-content:center">
+      <div style="display:flex;align-items:flex-end;gap:5px">
+        <span style="font-size:34px;font-weight:800;color:#1A1A1A;letter-spacing:-.02em;font-family:'Plus Jakarta Sans',sans-serif;line-height:1">orient</span>
+        <span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#E8321A;margin-bottom:6px;flex-shrink:0"></span>
+      </div>
+    </div>
+    <div style="display:none">
+    </div>
+    <div id="pw-title">Orient Software</div>
+    <div id="pw-sub">Digital Marketing Report · March 2026</div>
+    <label id="pw-label" for="pw-input">Password</label>
+    <input id="pw-input" type="password" placeholder="Enter password to access" autocomplete="off"/>
+    <button id="pw-btn" onclick="checkPw()">Access →</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+    <div id="pw-footer">Confidential — Internal Use Only</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(sessionStorage.getItem('orient_auth')==='ok'){
+    document.getElementById('pw-overlay').style.display='none';
+  }
+})();
+document.getElementById('pw-input').addEventListener('keydown',function(e){
+  if(e.key==='Enter') checkPw();
+});
+function checkPw(){
+  var val = document.getElementById('pw-input').value;
+  if(val==='@Orientsoftware2026'){
+    sessionStorage.setItem('orient_auth','ok');
+    document.getElementById('pw-overlay').style.display='none';
+  } else {
+    document.getElementById('pw-err').style.display='block';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-input').focus();
+    document.getElementById('pw-input').style.borderColor='#B42318';
+    setTimeout(function(){
+      document.getElementById('pw-input').style.borderColor='#D0D5DD';
+    }, 1500);
+  }
+}
+</script>
+
+<!-- ══ TOPBAR ══ -->
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-logo" style="background:transparent;padding:0;display:flex;align-items:center;gap:7px;width:auto;height:auto;border-radius:0">
+      <span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#E8321A;flex-shrink:0"></span>
+      <span style="font-size:14px;font-weight:700;color:#0D1B2E;letter-spacing:-.01em">Orient Software</span>
+    </div>
+    <div class="tb-sep"></div>
+    <span class="tb-sub">Digital Marketing — Monthly Report</span>
+  </div>
+  <div class="tb-right">
+    <div class="tb-period">
+      <svg viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2.5" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 1.5v2M8.5 1.5v2M1.5 5.5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      March 2026
+    </div>
+    <div class="tb-filter">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 3.5h10M3.5 6.5h6M5.5 9.5h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Filter
+    </div>
+    <div class="tb-ai">✦ AI Insights</div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ ALERT ══ -->
+<div class="alert">
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M7.5 1.5L13.5 13H1.5L7.5 1.5Z" stroke="#F59E0B" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 5.5v4" stroke="#F59E0B" stroke-width="1.4" stroke-linecap="round"/><circle cx="7.5" cy="11.2" r=".8" fill="#F59E0B"/></svg>
+  <p><strong>Google March 2026 Core Update — 27 Mar 2026:</strong> Topical authority penalty caused traffic &amp; lead drop. Actions taken: ~50 posts removed/redirected (16–27 Mar) · Full site review completed (12–18 Mar) · Brand keywords → <strong>Top 1</strong>. Recovery expected Q2 2026.</p>
+</div>
+
+<!-- ══ ALL CHANNELS ══ -->
+<div class="section-title">All channels</div>
+<div class="section-sub">Reporting period: 1 March – 31 March 2026 · Data: GA4 · Ahrefs · CRM · Dashboard</div>
+
+<!-- metric cards — 4 rows -->
+<!-- Hàng 1: Total Users | Leads Generated -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+  <div class="mcard" style="padding:22px 24px">
+    <div class="mcard-label">Total Users <span style="font-size:10px;color:#94A3B8;font-weight:400">(GA4)</span></div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">4,486</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span style="color:#027A48;font-size:13px;font-weight:600">↑ 36.5% Recovering</span>
+      <span style="color:#667085;font-size:12px;font-weight:500">vs Feb (3,286)</span>
+    </div>
+    <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
+      <div style="width:56.4%;height:100%;background:linear-gradient(90deg,#0E7490,#22D3EE);border-radius:4px" title="56.4% of Q2 target"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px">
+      <span style="font-size:11px;color:#667085">Q2 target: 7,955</span>
+      <span style="font-size:11px;font-weight:700;color:#0E7490">56.4% achieved</span>
+    </div>
+  </div>
+
+  <!-- Leads Generated -->
+
+  <div class="mcard" style="padding:22px 24px">
+    <div class="mcard-label">Leads Generated / mo <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">19</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span style="color:#B42318;font-size:13px;font-weight:600">↓ 38.7% vs Feb (31)</span>
+    </div>
+    <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
+      <div style="width:59.4%;height:100%;background:linear-gradient(90deg,#B42318,#F97316);border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px">
+      <span style="font-size:11px;color:#667085">Q2 target: 32/mo</span>
+      <span style="font-size:11px;font-weight:700;color:#B42318">59.4% achieved</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hàng 2: Organic Search | Total Paid March -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+  <div class="mcard" style="padding:22px 24px">
+    <div class="mcard-label">Organic Search Users <span style="font-size:10px;color:#94A3B8;font-weight:400">(GA4)</span></div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">1,892</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span style="color:#B42318;font-size:13px;font-weight:600">↓ 0.4% vs Feb (1,900)</span>
+    </div>
+    <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
+      <div style="width:42.2%;height:100%;background:linear-gradient(90deg,#7C3AED,#A78BFA);border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px">
+      <span style="font-size:11px;color:#667085">42.2% of total users</span>
+      <span style="font-size:11px;font-weight:700;color:#7C3AED">23.8% of Q2 target</span>
+    </div>
+  </div>
+
+  <!-- Total Paid -->
+
+  <div class="mcard" style="padding:22px 24px">
+    <div class="mcard-label">Total Paid March <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">$697.60</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span style="color:#667085;font-size:13px;font-weight:600">— Budget allocated: $3,000/mo</span>
+    </div>
+    <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
+      <div style="width:33.8%;height:100%;background:linear-gradient(90deg,#0E7490,#22D3EE);border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px">
+      <span style="font-size:11px;color:#667085">Budget: $3,000/mo</span>
+      <span style="font-size:11px;font-weight:700;color:#667085">23.3% used · $2,302 remaining</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hàng 3: Total Leads Q1 | Total Paid Q1 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+  <div class="mcard" style="padding:18px 20px">
+    <div class="mcard-label">Total Leads Q1 <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">77</div>
+    <div style="color:#667085;font-size:12px;font-weight:600;margin-bottom:8px">Jan 27 · Feb 31 · Mar 19</div>
+    <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
+      <div style="width:75.3%;height:100%;background:#B45309;border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:10.5px;color:#667085">Q2 annualised ~97</span>
+      <span style="font-size:10.5px;font-weight:700;color:#B45309">79.4%</span>
+    </div>
+  </div>
+
+  <div class="mcard" style="padding:22px 24px">
+    <div class="mcard-label">Total Paid Q1 <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">$3,040.60</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span style="color:#667085;font-size:13px;font-weight:600">— Jan $1,962 · Feb $381 · Mar $697.60</span>
+    </div>
+    <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
+      <div style="width:23.3%;height:100%;background:linear-gradient(90deg,#0E7490,#22D3EE);border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:5px">
+      <span style="font-size:11px;color:#667085">Paid Post + Listing Campaign Q1</span>
+      <span style="font-size:11px;font-weight:700;color:#667085">$3,040.60 / ~$9k Q1 budget</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hàng 4: Traffic Value | Domain Rating | Bounce Rate | Tech SEO -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:14px">
+  <div class="mcard" style="padding:18px 20px">
+    <div class="mcard-label">Traffic Value <span style="font-size:10px;color:#94A3B8;font-weight:400">(Ahrefs)</span></div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">$5,500</div>
+    <div style="color:#B42318;font-size:12px;font-weight:600;margin-bottom:8px">↓ 45% vs baseline ($10k)</div>
+    <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
+      <div style="width:34.4%;height:100%;background:linear-gradient(90deg,#B42318,#F97316);border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:10.5px;color:#667085">Q2 target: $16,000</span>
+      <span style="font-size:10.5px;font-weight:700;color:#B42318">34.4%</span>
+    </div>
+  </div>
+
+  <div class="mcard" style="padding:18px 20px">
+    <div class="mcard-label">Domain Rating <span style="font-size:10px;color:#94A3B8;font-weight:400">(Ahrefs)</span></div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">59</div>
+    <div style="color:#027A48;font-size:12px;font-weight:600;margin-bottom:8px">↑ Ahead of target</div>
+    <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
+      <div style="width:98.3%;height:100%;background:#027A48;border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:10.5px;color:#667085">Q2 target: 60</span>
+      <span style="font-size:10.5px;font-weight:700;color:#027A48">98.3%</span>
+    </div>
+  </div>
+
+  <div class="mcard" style="padding:18px 20px">
+    <div class="mcard-label">Bounce Rate <span style="font-size:10px;color:#94A3B8;font-weight:400">(GA4)</span></div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">46.6%</div>
+    <div style="color:#027A48;font-size:12px;font-weight:600;margin-bottom:8px">↓ Improving (lower = better)</div>
+    <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
+      <div style="width:96.5%;height:100%;background:#027A48;border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:10.5px;color:#667085">Q2 target: 45%</span>
+      <span style="font-size:10.5px;font-weight:700;color:#027A48">96.5%</span>
+    </div>
+  </div>
+
+  <div class="mcard" style="padding:18px 20px">
+    <div class="mcard-label">Technical SEO Score <span style="font-size:10px;color:#94A3B8;font-weight:400">(Ahrefs)</span></div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">100%</div>
+    <div style="color:#027A48;font-size:12px;font-weight:600;margin-bottom:8px">✅ Full audit done</div>
+    <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
+      <div style="width:100%;height:100%;background:#027A48;border-radius:4px"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:10.5px;color:#667085">Q2 target: ≥90%</span>
+      <span style="font-size:10.5px;font-weight:700;color:#027A48">111%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHARTS ROW: Users trend + Sources ══ -->
+<div class="grid2-wide">
+  <!-- Users & Leads chart combined -->
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Total Users &amp; Leads Generated — Jan to Dec 2026</div>
+        <div class="card-sub" style="display:flex;gap:14px;margin-top:5px">
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#0E7490"></span>Total Users</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><span style="display:inline-block;width:18px;height:2px;border-radius:2px;background:#BE3B3B"></span>Leads Generated</span>
+        </div>
+      </div>
+      <div class="card-menu">≡</div>
+    </div>
+    <div class="card-body">
+      <div class="chart-wrap h200"><canvas id="ch-combined"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Top sources donut -->
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Top traffic sources</div>
+        <div class="card-sub">1–31 March 2026 · Active users · Source: GA4</div>
+      </div>
+      <div class="card-menu">≡</div>
+    </div>
+    <div class="sources-layout" style="padding-top:10px">
+      <div class="donut-area">
+        <div class="donut-wrap"><canvas id="ch-donut"></canvas></div>
+        <div class="donut-legend">
+          <div class="dl-item"><span class="dl-dot" style="background:#7C3AED"></span>Organic Search: 42.4%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#0E7490"></span>Direct: 33.2%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#059669"></span>Organic Social: 16.9%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#F97316"></span>Referral: 5.6%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#94A3B8"></span>Unassigned: 5.1%</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#EAB308"></span>Email: 0.02%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SOURCE TABLE ══ -->
+<div class="card" style="margin-bottom:16px">
+  <div class="card-hdr">
+    <div>
+      <div class="card-title">Top Sources</div>
+      <div class="card-sub">Source: GA4 · 1–31 March 2026 · Total Users = GA4 active users. Conv. = Leads from CRM / Dashboard.</div>
+    </div>
+  </div>
+  <div class="card-body" style="padding-top:8px">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:32px">#</th>
+          <th>Source</th>
+          <th class="r">Active Users</th>
+          <th class="r">Sessions</th>
+          <th class="r">Leads (Conv.)</th>
+          <th class="r">Conv. Rate</th>
+          <th class="r">Bounce Rate <span style="font-weight:400;opacity:.7">(Ahrefs)</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank">1</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#7C3AED"></span>Organic Search</div></td>
+          <td class="num">1,892</td>
+          <td class="num">3,034</td>
+          <td class="num" style="font-weight:700;color:#027A48">9</td>
+          <td class="num" style="font-weight:600;color:#027A48">0.48%</td>
+          <td class="num-muted">55%</td>
+        </tr>
+        <tr>
+          <td><span class="rank">2</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#0E7490"></span>Direct</div></td>
+          <td class="num">1,495</td>
+          <td class="num">2,521</td>
+          <td class="num">4</td>
+          <td class="num-muted">0.27%</td>
+          <td class="num" style="color:#027A48;font-weight:600">42% ↓ best</td>
+        </tr>
+        <tr>
+          <td><span class="rank">3</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#059669"></span>Organic Social</div></td>
+          <td class="num">731</td>
+          <td class="num">1,181</td>
+          <td class="num">1</td>
+          <td class="num-muted">0.14%</td>
+          <td class="num-muted">68%</td>
+        </tr>
+        <tr>
+          <td><span class="rank">4</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#F97316"></span>Referral</div></td>
+          <td class="num">284</td>
+          <td class="num">440</td>
+          <td class="num">3</td>
+          <td class="num-muted">1.06%</td>
+          <td class="num-muted">48%</td>
+        </tr>
+        <tr>
+          <td><span class="rank">5</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#94A3B8"></span>Unassigned</div></td>
+          <td class="num">222</td>
+          <td class="num">289</td>
+          <td class="num">0</td>
+          <td class="num-muted">0%</td>
+          <td class="num-muted">52%</td>
+        </tr>
+        <tr>
+          <td><span class="rank">6</span></td>
+          <td><div class="src-name"><span class="src-dot" style="background:#EAB308"></span>Email</div></td>
+          <td class="num">1</td>
+          <td class="num">2</td>
+          <td class="num">0</td>
+          <td class="num-muted">0%</td>
+          <td class="num-muted">100%</td>
+        </tr>
+        <tr style="background:#F0F9FF">
+          <td colspan="2" style="font-weight:700;color:#0D1B2E">Total</td>
+          <td class="num" style="font-weight:700;color:#0E7490">4,486</td>
+          <td class="num" style="color:#667085">7,244</td>
+          <td class="num" style="font-weight:700;color:#027A48">19</td>
+          <td class="num" style="font-weight:700;color:#027A48">0.42%</td>
+          <td class="num" style="font-weight:600;color:#0D1B2E">46.6% avg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ══ CPL CARD ══ -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">Where do the 19 leads come from? · March 2026</div>
+        <div class="card-sub">Leads breakdown by traffic source · Source: GA4 Key Events mapped to CRM</div>
+      </div>
+    </div>
+    <div class="card-body" style="padding-top:10px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="width:9px;height:9px;border-radius:50%;background:#7C3AED;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Organic Search</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:100%;height:100%;background:#7C3AED;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#7C3AED;min-width:20px;text-align:right">9</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">47.4%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="width:9px;height:9px;border-radius:50%;background:#0E7490;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Direct</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:44.4%;height:100%;background:#0E7490;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#0E7490;min-width:20px;text-align:right">4</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">21.1%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="width:9px;height:9px;border-radius:50%;background:#F97316;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Referral</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:33.3%;height:100%;background:#F97316;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#F97316;min-width:20px;text-align:right">3</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">15.8%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
+          <span style="width:9px;height:9px;border-radius:50%;background:#059669;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Organic Social</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:11.1%;height:100%;background:#059669;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#059669;min-width:20px;text-align:right">1</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">5.3%</span>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #059669">
+        <div style="font-size:11.5px;color:#014737;font-weight:600">📌 Key insight</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Organic Search delivers most leads (9, 47.4%) — SEO recovery directly impacts pipeline. Referral CVR is 1.06% — highest of all channels (3 leads from 284 users). Priority: recover organic traffic + scale referral.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CVR Card -->
+  <div class="card">
+    <div class="card-hdr">
+      <div>
+        <div class="card-title">CVR (Conversion Rate) · YTD 2026</div>
+        <div class="card-sub">CVR = (Leads Generated ÷ Total Users) × 100% · Source: GA4 + CRM</div>
+      </div>
+    </div>
+    <div class="card-body" style="padding-top:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+        <div style="text-align:center;padding:12px;background:#F8FAFC;border-radius:8px;border:1px solid #E4E7EC">
+          <div style="font-size:10px;font-weight:600;color:#667085;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">January</div>
+          <div style="font-size:22px;font-weight:700;color:#0D1B2E">0.407%</div>
+          <div style="font-size:10px;color:#667085;margin-top:2px">27 leads ÷ 6,629 users</div>
+          <div style="font-size:11px;font-weight:600;color:#0E7490;margin-top:4px">Baseline month</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:#F0FDF4;border-radius:8px;border:1px solid #BBF7D0">
+          <div style="font-size:10px;font-weight:600;color:#667085;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">February</div>
+          <div style="font-size:22px;font-weight:700;color:#027A48">0.943%</div>
+          <div style="font-size:10px;color:#667085;margin-top:2px">31 leads ÷ 3,286 users</div>
+          <div style="font-size:11px;font-weight:600;color:#027A48;margin-top:4px">↑ Best month CVR</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:#FEF2F2;border-radius:8px;border:1px solid #FECACA">
+          <div style="font-size:10px;font-weight:600;color:#667085;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">March</div>
+          <div style="font-size:22px;font-weight:700;color:#B42318">0.42%</div>
+          <div style="font-size:10px;color:#667085;margin-top:2px">19 leads ÷ 4,486 users</div>
+          <div style="font-size:11px;font-weight:600;color:#B42318;margin-top:4px">↓ vs Feb (0.943%)</div>
+        </div>
+      </div>
+      <div style="background:#0D1B2E;border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px">Q1 Average CVR</div>
+          <div style="font-size:24px;font-weight:700;color:#fff">0.535%</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">77 leads ÷ 14,401 total users</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px">Q2 Target CVR</div>
+          <div style="font-size:24px;font-weight:700;color:#22D3EE">0.402%</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">32 leads ÷ 7,955 target users</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding:9px 12px;background:#FFFBEB;border-radius:8px;border-left:3px solid #F59E0B">
+        <div style="font-size:11px;color:#78350F;line-height:1.5">⚠ Feb CVR spike (0.943%) due to traffic drop — fewer users but leads held. Mar CVR (0.42%) dropped as Core Update cut both traffic and leads. Q2 goal: restore traffic to 7,955+ users to hit CVR ~0.40%.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ RECOVERY PLAN ══ -->
+<div class="section-gap"></div>
+<div class="section-title">Recovery Plan · Post Google Core Update</div>
+<div class="section-sub">Root cause: Topical Authority Penalty → 3 levers to fix</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;margin-top:10px">
+
+  <!-- What happened + what we did -->
+  <div class="card">
+    <div class="card-hdr"><div class="card-title">Root Cause &amp; March Actions (Done)</div></div>
+    <div class="card-body" style="padding-top:10px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="padding:10px 12px;background:#FEF2F2;border-radius:8px;border-left:3px solid #DC2626;margin-bottom:4px">
+          <div style="font-size:11.5px;font-weight:600;color:#7F1D1D">Google March 2026 Core Update — 27 Mar 2026</div>
+          <div style="font-size:11px;color:#991B1B;margin-top:4px;line-height:1.5">3 causes: Local Relevance · Topical Authority Penalty (main) · Reducing clickbait content</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;flex-shrink:0">✓</span>
+          <div><div style="font-size:12px;font-weight:600;color:#344054">~50 posts removed / redirected</div><div style="font-size:11px;color:#667085">16–27 Mar · Off-topic content de-indexed · SEOer</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #F2F4F7">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;flex-shrink:0">✓</span>
+          <div><div style="font-size:12px;font-weight:600;color:#344054">Full website tech SEO review</div><div style="font-size:11px;color:#667085">12–18 Mar · Schema + titles fixed · Brand KW → Top 1</div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Recovery timeline -->
+  <div class="card">
+    <div class="card-hdr"><div class="card-title">Recovery Timeline &amp; Forecast</div></div>
+    <div class="card-body" style="padding-top:10px">
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;position:relative">
+          <div style="width:2px;background:#E4E7EC;position:absolute;left:9px;top:20px;bottom:0"></div>
+          <div style="width:20px;height:20px;border-radius:50%;background:#DCFCE7;border:2px solid #15803D;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1">
+            <span style="width:6px;height:6px;border-radius:50%;background:#15803D;display:block"></span>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#344054">March 2026 — Cleanup complete</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">50 posts removed · Tech SEO fixed · Brand KW Top 1 ✅</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;position:relative">
+          <div style="width:2px;background:#E4E7EC;position:absolute;left:9px;top:20px;bottom:0"></div>
+          <div style="width:20px;height:20px;border-radius:50%;background:#DBEAFE;border:2px solid #1D4ED8;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1">
+            <span style="width:6px;height:6px;border-radius:50%;background:#1D4ED8;display:block"></span>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#344054">April 2026 — Google re-crawl &amp; reindex</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">Expected: +15–20% traffic recovery · New website vendor kickoff</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding-bottom:14px;position:relative">
+          <div style="width:2px;background:#E4E7EC;position:absolute;left:9px;top:20px;bottom:0"></div>
+          <div style="width:20px;height:20px;border-radius:50%;background:#F3E8FF;border:2px solid #7C3AED;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1">
+            <span style="width:6px;height:6px;border-radius:50%;background:#7C3AED;display:block"></span>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#344054">May 2026 — New website live (21 May)</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">13 core landing pages · Target: ~16,500 users/mo · CPL ↓</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:20px;height:20px;border-radius:50%;background:#F0FDF4;border:2px solid #059669;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="width:6px;height:6px;border-radius:50%;background:#059669;display:block"></span>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:#344054">Jun 2026 — Q2 target: 7,955 users · 32 leads/mo</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">LinkedIn Ads + Microsoft Ads running · PR links boosting DR to 65</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ UPCOMING ACTIONS APRIL ══ -->
+<div class="section-title">Upcoming Actions · April 2026 (Q2 Kick-off)</div>
+<div class="section-sub">Prepared by: Digital Marketing Team · Owner + deadline per initiative</div>
+<div class="card" style="margin-bottom:16px;margin-top:10px;overflow:hidden">
+  <table>
+    <thead>
+      <tr>
+        <th>Initiative</th>
+        <th>Start</th>
+        <th>End / Deadline</th>
+        <th>Target / Expectation</th>
+        <th>Budget</th>
+        <th>Owner</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>New Website Launch (13 core pages)</strong></td>
+        <td>04 Apr</td><td>21 May</td>
+        <td style="color:#667085;font-size:11px">18,000 users/mo after launch · 13 service pages live</td>
+        <td style="color:#027A48;font-weight:700">$7,099</td><td style="color:#667085">Web Dev</td>
+        <td><span class="sb s-g">✅ Approved</span></td>
+      </tr>
+      <tr>
+        <td><strong>LinkedIn Ads (Company Page — MOF/BOF)</strong></td>
+        <td>15 Apr</td><td>15 May</td>
+        <td style="color:#667085;font-size:11px">5 leads/mo · Image + Carousel + Lead Gen Forms</td>
+        <td>$1,000/mo</td><td style="color:#667085">Digital Lead</td>
+        <td><span class="sb s-b">🔵 In Progress</span></td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft Ads</strong></td>
+        <td>16 Apr</td><td>30 Apr</td>
+        <td style="color:#667085;font-size:11px">5 leads/mo · Account setup in progress with partner</td>
+        <td>TBD</td><td style="color:#667085">Digital Lead</td>
+        <td><span class="sb s-b">🔵 In Progress</span></td>
+      </tr>
+      <tr>
+        <td><strong>PR — Press Release (20th Anniversary)</strong></td>
+        <td>16 Apr</td><td>23 Apr</td>
+        <td style="color:#667085;font-size:11px">235 quality backlinks · Brand awareness milestone</td>
+        <td>$3,710</td><td style="color:#667085">Digital / Content</td>
+        <td><span class="sb" style="background:#F0F4FF;color:#2C3E6B">📅 Planned</span></td>
+      </tr>
+      <tr>
+        <td><strong>B2B Top Lists (GoodFirms)</strong></td>
+        <td>06 Apr</td><td>Annual</td>
+        <td style="color:#667085;font-size:11px">Annual package · Authority + leads via GoodFirms listing</td>
+        <td>$1,000/mo</td><td style="color:#667085">SEO / Digital Lead</td>
+        <td><span class="sb s-b">🔵 In Progress</span></td>
+      </tr>
+      <tr>
+        <td><strong>Blog Topic Clusters (New Articles)</strong></td>
+        <td>01 Apr</td><td>30 Jun</td>
+        <td style="color:#667085;font-size:11px">Q2: <strong>16 new articles</strong> · ~5-6/mo · Apr–Jun</td>
+        <td>In-house</td><td style="color:#667085">SEO / Content</td>
+        <td><span class="sb s-b">🔵 In Progress</span></td>
+      </tr>
+      <tr>
+        <td><strong>Update Blog Posts (Audit)</strong></td>
+        <td>01 Apr</td><td>30 Jun</td>
+        <td style="color:#667085;font-size:11px">Q2: 20 audit articles · ~7/mo · Apr–Jun</td>
+        <td>In-house</td><td style="color:#667085">SEO / Content</td>
+        <td><span class="sb s-b">🔵 In Progress</span></td>
+      </tr>
+      <tr>
+        <td><strong>Co-Authors: Tech Leads on Articles (E-E-A-T)</strong></td>
+        <td>20 Apr</td><td>31 May</td>
+        <td style="color:#667085;font-size:11px">E-E-A-T boost · Feature Orient Tech Leads as co-authors</td>
+        <td>In-house</td><td style="color:#667085">Digital / Content</td>
+        <td><span class="sb" style="background:#F0F4FF;color:#2C3E6B">📅 Planned</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ Q2 BUDGET ══ -->
+<div class="section-title">Budget · Q2 Plan &amp; Commitments</div>
+<div class="section-sub">Q1 total spent: $3,040.60 (Jan $1,962 + Feb $381 + Mar $697.60) · Q2 committed investment below</div>
+<div style="margin-bottom:16px;margin-top:10px">
+
+  <!-- Q2 budget plan — full width -->
+  <div class="card">
+    <div class="card-hdr"><div class="card-title">Q2 Budget Plan — April 2026 onwards</div></div>
+    <div class="card-body" style="padding-top:8px">
+      <table>
+        <thead>
+          <tr>
+            <th>Initiative</th>
+            <th>Group</th>
+            <th>Start</th>
+            <th>End</th>
+            <th class="r">Budget</th>
+            <th>Owner</th>
+            <th>Goal</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LinkedIn Ads — Company Page (MOF/BOF)</strong></td>
+            <td style="color:#667085">Conversion</td><td style="color:#667085">01 Apr</td><td style="color:#667085">30 Apr</td>
+            <td class="num">$1,000/mo</td><td style="color:#667085">Digital Lead</td>
+            <td style="color:#667085;font-size:11px">5 leads/mo</td>
+            <td><span class="sb s-a">🟠 Reviewing</span></td>
+          </tr>
+          <tr>
+            <td><strong>New Website Launch (13 core pages)</strong></td>
+            <td style="color:#667085">Branding</td><td style="color:#667085">04 Apr</td><td style="color:#667085">21 May</td>
+            <td class="num" style="color:#027A48;font-weight:700">$7,099</td><td style="color:#667085">Web Dev</td>
+            <td style="color:#667085;font-size:11px">18,000 users/mo</td>
+            <td><span class="sb s-g">✅ Approved</span></td>
+          </tr>
+          <tr>
+            <td><strong>PR — Press Release (20th Anniversary)</strong></td>
+            <td style="color:#667085">Branding</td><td style="color:#667085">16 Apr</td><td style="color:#667085">23 Apr</td>
+            <td class="num">$4,000</td><td style="color:#667085">Digital / Content</td>
+            <td style="color:#667085;font-size:11px">235 quality links</td>
+            <td><span class="sb s-g">✅ Approved</span></td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Ads</strong></td>
+            <td style="color:#667085">Conversion</td><td style="color:#667085">01 Apr</td><td style="color:#667085">30 Apr</td>
+            <td class="num">TBD</td><td style="color:#667085">Digital Lead</td>
+            <td style="color:#667085;font-size:11px">5 leads/mo</td>
+            <td><span class="sb" style="background:#F0F4FF;color:#2C3E6B">📅 Planned</span></td>
+          </tr>
+          <tr>
+            <td><strong>Listing Campaign — GoodFirms</strong></td>
+            <td style="color:#667085">Conversion</td><td style="color:#667085">06 Apr</td><td style="color:#667085">06 May</td>
+            <td class="num">$1,000/mo</td><td style="color:#667085">SEO</td>
+            <td style="color:#667085;font-size:11px">Authority + leads</td>
+            <td><span class="sb s-g">✅ Running</span></td>
+          </tr>
+          <tr style="background:#F0F9FF">
+            <td colspan="4"><strong style="color:#0D1B2E">Q2 Total Committed</strong>
+              <span style="font-size:11px;color:#667085;margin-left:8px">+ Paid Post $3,000/mo ongoing</span>
+            </td>
+            <td class="num" style="font-weight:700;color:#0E7490;font-size:14px">$11,000+</td>
+            <td colspan="3" style="font-size:11px;color:#667085">excl. Microsoft Ads (TBD) &amp; in-house costs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ MONTHLY TREND TABLE ══ -->
+<div class="section-gap"></div>
+<div class="section-title">Total Users — Total Leads · 2026 YTD</div>
+<div class="section-sub">Monthly trend · January – March 2026</div>
+
+
+
+<div class="grid2" style="margin-bottom:10px;gap:10px">
+  <div class="card">
+    <div class="card-hdr" style="padding-bottom:6px">
+      <div class="card-title" style="font-size:12px">Total Users by Month</div>
+      <div class="card-menu">≡</div>
+    </div>
+    <div class="card-body" style="padding:8px 14px 12px"><div class="chart-wrap h150"><canvas id="ch-mu"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-hdr" style="padding-bottom:6px">
+      <div class="card-title" style="font-size:12px">Total Leads by Month</div>
+      <div class="card-menu">≡</div>
+    </div>
+    <div class="card-body" style="padding:8px 14px 12px"><div class="chart-wrap h150"><canvas id="ch-ml"></canvas></div></div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:16px">
+  <div class="card-body" style="padding-top:8px">
+    <table class="month-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th class="r">Total Users</th>
+          <th style="width:200px">Users Bar</th>
+          <th class="r">Total Leads</th>
+          <th style="width:140px">Leads Bar</th>
+          <th class="r">Bounce Rate</th>
+          <th>vs Prior Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>January 2026</strong></td>
+          <td class="num">6,629</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#0E7490"></div></div></td>
+          <td class="num">27</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#059669"></div></div></td>
+          <td class="num-muted">—</td>
+          <td class="trend-nt">— Baseline month</td>
+        </tr>
+        <tr>
+          <td><strong>February 2026</strong></td>
+          <td class="num">3,286</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:50%;background:#0E7490"></div></div></td>
+          <td class="num">31</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#059669"></div></div></td>
+          <td class="num-muted">—</td>
+          <td><span class="trend-up">↓ −42.7% users</span> <span style="color:var(--green);font-size:11px;font-weight:500">↑ +14.8% leads</span></td>
+        </tr>
+        <tr>
+          <td><strong>March 2026</strong></td>
+          <td class="num">4,486</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:50%;background:#0E7490"></div></div></td>
+          <td class="num">19</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:63%;background:#059669"></div></div></td>
+          <td class="num-muted">46.6%</td>
+          <td><span class="trend-up">↑ +36.5% users &nbsp;↓ −38.7% leads</span></td>
+        </tr>
+        <tr style="background:#F0F9FF">
+          <td><strong style="color:#0E7490">Q1 Total</strong></td>
+          <td class="num" style="color:#0E7490;font-weight:700">14,401</td>
+          <td></td>
+          <td class="num" style="color:#059669;font-weight:700">77 leads</td>
+          <td></td>
+          <td class="num-muted">—</td>
+          <td style="font-size:11px;color:var(--muted)">Q2 target: 32/mo · ~97 cumulative</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ KPI SCORECARD ══ -->
+<div class="section-gap"></div>
+<div class="section-title">KPI scorecard · vs Q2 target (Jun 2026)</div>
+<div class="section-sub">Colour key: <span style="background:#FEE4E2;color:#B42318;padding:1px 6px;border-radius:4px;font-size:10.5px;font-weight:600">Red &lt;60%</span> &nbsp;<span style="background:#FEF0C7;color:#B54708;padding:1px 6px;border-radius:4px;font-size:10.5px;font-weight:600">Amber 60–80%</span> &nbsp;<span style="background:#D1FADF;color:#027A48;padding:1px 6px;border-radius:4px;font-size:10.5px;font-weight:600">Green ≥80%</span></div>
+
+<div class="kpi-wrap" style="margin-bottom:16px;margin-top:10px">
+<table class="kpi">
+<thead>
+  <tr>
+    <th>Funnel</th><th>Metric</th><th>Data Source</th><th>Baseline</th>
+    <th>Q2 Target<br>(Jun)</th><th>Q3 Target<br>(Sep)</th><th>Q4 Target<br>(Dec)</th>
+    <th>March Actual</th><th class="r" style="text-align:center">vs Q2</th>
+    <th>Status</th><th>Notes</th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="ftag fa">ATTRACT</span></td>
+  <td>Monthly Traffic (Users)</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">GA4</td><td style="color:var(--muted)">6,629</td>
+  <td><strong>7,955</strong></td><td>9,944</td><td>13,258</td>
+  <td><strong>4,486</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-r">53.8%</span></td>
+  <td><span class="sb s-a">⚠️ At Risk</span></td>
+  <td style="color:var(--muted);font-size:11px">All channels · Core Update impact</td>
+</tr>
+<tr>
+  <td><span class="ftag fa">ATTRACT</span></td>
+  <td>Traffic Value / mo (Ahrefs $)</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">Ahrefs</td><td style="color:var(--muted)">$10,000</td>
+  <td><strong>$16,000</strong></td><td>$20,000</td><td>$25,000</td>
+  <td><strong>$5,500</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-r">34.4%</span></td>
+  <td><span class="sb s-a">⚠️ At Risk</span></td>
+  <td style="color:var(--muted);font-size:11px">Ahrefs estimate · reflects organic drop</td>
+</tr>
+<tr>
+  <td><span class="ftag fa">ATTRACT</span></td>
+  <td>Domain Rating (Ahrefs)</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">Ahrefs</td><td style="color:var(--muted)">55</td>
+  <td><strong>60</strong></td><td>62</td><td>65</td>
+  <td><strong>59</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-g">98.3%</span></td>
+  <td><span class="sb s-g">✅ On Track</span></td>
+  <td style="color:var(--muted);font-size:11px">Ahead of Q2 target</td>
+</tr>
+<tr>
+  <td><span class="ftag fen">ENGAGE</span></td>
+  <td>Service / Landing Pages Live</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">SharePoint / CMS</td><td style="color:var(--muted)">0</td>
+  <td><strong>12</strong></td><td>39</td><td>59</td>
+  <td><strong>0</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-a">—</span></td>
+  <td><span class="sb s-b">🔵 In Progress</span></td>
+  <td style="color:var(--muted);font-size:11px">New website launch: 21 May 2026</td>
+</tr>
+<tr>
+  <td><span class="ftag fen">ENGAGE</span></td>
+  <td>Bounce Rate <span style="font-size:10px;color:#94A3B8">(GA4)</span></td><td style="color:var(--muted);font-size:11px;white-space:nowrap">GA4</td><td style="color:var(--muted)">50%</td>
+  <td><strong>45%</strong></td><td>42%</td><td>40%</td>
+  <td><strong>46.6%</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-g">93.8%</span></td>
+  <td><span class="sb s-g">✅ On Track</span></td>
+  <td style="color:var(--muted);font-size:11px">Lower is better · improving</td>
+</tr>
+<tr>
+  <td><span class="ftag fc">CONVERT</span></td>
+  <td>Leads Generated / mo</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">27</td>
+  <td><strong>32</strong></td><td>43</td><td>54</td>
+  <td><strong>19</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-a">59.4%</span></td>
+  <td><span class="sb s-a">⚠️ At Risk</span></td>
+  <td style="color:var(--muted);font-size:11px">Jan:27 · Feb:31 · Mar:19</td>
+</tr>
+<tr>
+  <td><span class="ftag fc">CONVERT</span></td>
+  <td>Total Leads — Cumulative (Q1)</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">~81</td>
+  <td><strong>~97</strong></td><td>~162</td><td>—</td>
+  <td><strong>77</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-a">79.4%</span></td>
+  <td><span class="sb s-g">✅ On Track</span></td>
+  <td style="color:var(--muted);font-size:11px">Q1 actual 75 vs Q2 annualised ~97</td>
+</tr>
+<tr>
+  <td><span class="ftag fau">AUTHORITY</span></td>
+  <td>Technical SEO Score</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">Ahrefs</td><td style="color:var(--muted)">≥ 90%</td>
+  <td><strong>≥ 90%</strong></td><td>100%</td><td>100%</td>
+  <td><strong>100%</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-g">111%</span></td>
+  <td><span class="sb s-g">✅ On Track</span></td>
+  <td style="color:var(--muted);font-size:11px">Full audit completed Mar 12–18</td>
+</tr>
+<tr>
+  <td><span class="ftag fau">AUTHORITY</span></td>
+  <td>Quality Backlinks Built / mo</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">Ahrefs</td><td style="color:var(--muted)">8</td>
+  <td><strong>8</strong></td><td>8</td><td>8</td>
+  <td><strong>5</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-a">62.5%</span></td>
+  <td><span class="sb s-g">✅ On Track</span></td>
+  <td style="color:var(--muted);font-size:11px">Target 8/mo · 5 built · in progress</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ══ RECOMMENDATIONS ══ -->
+<div class="section-gap"></div>
+<div class="section-title">Key Recommendations · For Director Review</div>
+<div class="section-sub">Based on March 2026 data — prioritised by impact</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;margin-top:10px">
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 1px 3px rgba(16,24,40,.06);overflow:hidden">
+    <div style="background:#0D1B2E;padding:12px 16px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:16px">🚀</span>
+      <span style="font-size:12px;font-weight:700;color:#fff;letter-spacing:.03em">HIGH PRIORITY</span>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+      <div style="padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #15803D">
+        <div style="font-size:12px;font-weight:600;color:#014737">Scale Organic Social</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">0.55% CVR — highest of all sources. 4 leads from 723 users. Invest in LinkedIn content &amp; thought leadership to grow this channel in Q2.</div>
+      </div>
+      <div style="padding:10px 12px;background:#EFF8FF;border-radius:8px;border-left:3px solid #0E7490">
+        <div style="font-size:12px;font-weight:600;color:#0C4A6E">Accelerate website launch</div>
+        <div style="font-size:11px;color:#0369A1;margin-top:3px;line-height:1.5">12 landing pages = direct traffic &amp; leads recovery. Every week delay = ~$46 CPL maintained. Target: live by 21 May, no slippage.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 1px 3px rgba(16,24,40,.06);overflow:hidden">
+    <div style="background:#1D4ED8;padding:12px 16px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:16px">📊</span>
+      <span style="font-size:12px;font-weight:700;color:#fff;letter-spacing:.03em">WATCH CLOSELY</span>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+      <div style="padding:10px 12px;background:#FFFBEB;border-radius:8px;border-left:3px solid #D97706">
+        <div style="font-size:12px;font-weight:600;color:#78350F">CPL at $46.51 — unsustainable</div>
+        <div style="font-size:11px;color:#92400E;margin-top:3px;line-height:1.5">Mar CPL 3.8× higher than Jan/Feb. Must recover traffic first before adding paid spend. Target CPL: back to ~$15 by Q2 end.</div>
+      </div>
+      <div style="padding:10px 12px;background:#F5F3FF;border-radius:8px;border-left:3px solid #7C3AED">
+        <div style="font-size:12px;font-weight:600;color:#4C1D95">B2B Listings still under review</div>
+        <div style="font-size:11px;color:#5B21B6;margin-top:3px;line-height:1.5">GoodFirms proposal pending approval. Referral CVR is 0.26% — listings will drive quality inbound. Decision needed by 20 Apr.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 1px 3px rgba(16,24,40,.06);overflow:hidden">
+    <div style="background:#059669;padding:12px 16px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:16px">✅</span>
+      <span style="font-size:12px;font-weight:700;color:#fff;letter-spacing:.03em">ON TRACK · KEEP GOING</span>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+      <div style="padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #15803D">
+        <div style="font-size:12px;font-weight:600;color:#014737">DR 59 — ahead of Q2 target</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">PR Newswire (Apr) + guest posts running = DR 65 by Dec on track. Keep link building momentum consistent.</div>
+      </div>
+      <div style="padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #15803D">
+        <div style="font-size:12px;font-weight:600;color:#014737">Tech SEO 100% — foundation solid</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Brand keywords back to Top 1. Recovery signal positive. Google re-crawl expected Apr → traffic lift Apr–May.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CHANNEL PLAN ══ -->
+<div class="section-gap"></div>
+<div class="section-title">Channel Plan · 2026</div>
+<div class="section-sub">Annual channel strategy — Q2 (Apr–Jun) → Q3 (Jul–Sep) → Q4 (Oct–Dec)</div>
+
+<div class="cp-wrap" style="margin-top:10px">
+<div style="overflow-x:auto">
+<table class="cp">
+  <thead>
+    <tr>
+      <th style="width:90px">Channel</th>
+      <th>Initiative / Tactic</th>
+      <th class="c" style="width:80px">Q2</th>
+      <th class="c" style="width:80px">Q3</th>
+      <th class="c" style="width:80px">Q4</th>
+      <th style="width:90px">Budget</th>
+      <th style="width:110px">KPI</th>
+      <th style="width:70px">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="6" class="cp-seo"><div class="ch-cell" style="background:transparent;color:#1B3A6B;font-weight:700;font-size:11px">SEO &amp;<br>Website</div></td>
+      <td>New website — 13 core landing pages</td>
+      <td class="center"><span class="q-q2">✅ Launch</span></td><td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">$9,000</td><td style="color:var(--muted)">Traffic, Leads</td><td style="color:var(--muted)">Web Dev</td>
+    </tr>
+    <tr>
+      <td>Technical SEO audit &amp; fixes (Core Web Vitals)</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-rev">🔄 Review</span></td><td class="center"><span class="q-rev">🔄 Review</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">SEO Score</td><td style="color:var(--muted)">SEOer</td>
+    </tr>
+    <tr>
+      <td>AEO / AI Search optimization (SGE-ready)</td>
+      <td class="center"><span class="q-rev">📝 Research</span></td><td class="center"><span class="q-run">✅ Implement</span></td><td class="center"><span class="q-rev">🔄 Optimize</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">AI Citations</td><td style="color:var(--muted)">SEOer</td>
+    </tr>
+    <tr>
+      <td>Google Reviews (launch &amp; collect)</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">DR, Trust</td><td style="color:var(--muted)">SEOer / Digital Lead</td>
+    </tr>
+    <tr>
+      <td>39 main service pages (new site)</td>
+      <td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-run">✅ Build</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Traffic, Leads</td><td style="color:var(--muted)">Web Dev</td>
+    </tr>
+    <tr>
+      <td>20 niche pages (Fintech / Edutech)</td>
+      <td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-run">✅ Build</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Niche Leads</td><td style="color:var(--muted)">Web Dev</td>
+    </tr>
+    <tr>
+      <td rowspan="4" class="cp-link"><div class="ch-cell" style="background:transparent;color:#145A2D;font-weight:700">Link<br>Building</div></td>
+      <td>Guest Contributor &amp; Paid Posts (9 months)</td>
+      <td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">$18,000</td><td style="color:var(--muted)">DR, Traffic</td><td style="color:var(--muted)">SEOer</td>
+    </tr>
+    <tr>
+      <td>Press Release (20th Anniversary)</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">$4,000</td><td style="color:var(--muted)">Brand, Links</td><td style="color:var(--muted)">Digital Lead</td>
+    </tr>
+    <tr>
+      <td>GoodFirms Listings (all year)</td>
+      <td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">$9,000</td><td style="color:var(--muted)">DR, Authority</td><td style="color:var(--muted)">SEOer / Digital Lead</td>
+    </tr>
+    <tr>
+      <td>Profile, Directory &amp; Listicles</td>
+      <td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">Incl.</td><td style="color:var(--muted)">DR, Authority</td><td style="color:var(--muted)">SEOer</td>
+    </tr>
+    <tr>
+      <td rowspan="2" class="cp-content"><div class="ch-cell" style="background:transparent;color:#7B4F00;font-weight:700;font-size:11px">Content<br>Marketing</div></td>
+      <td>Monthly blog articles: 12/mo · Q2 = 20 audit + 16 new (36 total · Apr–Jun)</td>
+      <td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Organic Traffic</td><td style="color:var(--muted)">Web Dev / Content</td>
+    </tr>
+    <tr>
+      <td>Content brief &amp; keyword research per article</td>
+      <td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Rankings</td><td style="color:var(--muted)">SEOer</td>
+    </tr>
+    <tr>
+      <td rowspan="3" class="cp-paid"><div class="ch-cell" style="background:transparent;color:#8B2500;font-weight:700;font-size:11px">Paid<br>Ads</div></td>
+      <td>LinkedIn Ads — Company Page (MOF/BOF)</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-rev">🔍 Eval</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">$3,000</td><td style="color:var(--muted)">Leads Generated</td><td style="color:var(--muted)">Digital Lead</td>
+    </tr>
+    <tr>
+      <td>Microsoft Ads</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-rev">🔍 Eval</span></td><td class="center"><span class="q-no">—</span></td>
+      <td style="color:var(--muted)">TBD</td><td style="color:var(--muted)">Leads Generated</td><td style="color:var(--muted)">Digital Lead</td>
+    </tr>
+    <tr>
+      <td>ChatGPT Ads (if platform available)</td>
+      <td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-no">—</span></td><td class="center"><span class="q-rev">🔍 Eval</span></td>
+      <td style="color:var(--muted)">$3,000</td><td style="color:var(--muted)">Leads Generated</td><td style="color:var(--muted)">Digital Lead</td>
+    </tr>
+    <tr>
+      <td rowspan="3" class="cp-funnel"><div class="ch-cell" style="background:transparent;color:#4A1A7A;font-weight:700;font-size:11px">Lead<br>Funnel</div></td>
+      <td>Contact form + GA4 / GSC tracking setup</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-rev">🔄 Review</span></td><td class="center"><span class="q-rev">🔄 Review</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Lead Capture</td><td style="color:var(--muted)">Web Dev</td>
+    </tr>
+    <tr>
+      <td>Dashboard: Tracking &amp; Reporting functions</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-run">✅ Q3</span></td><td class="center"><span class="q-rev">🔄 Review</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Tracking &amp; Reporting</td><td style="color:var(--muted)">Web Dev</td>
+    </tr>
+    <tr>
+      <td>Monthly Report Framework (structured)</td>
+      <td class="center"><span class="q-q2">✅ Q2</span></td><td class="center"><span class="q-run">✅ Run</span></td><td class="center"><span class="q-run">✅ Run</span></td>
+      <td style="color:var(--muted)">In-house</td><td style="color:var(--muted)">Visibility</td><td style="color:var(--muted)">Digital Lead</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="footer">
+  Data sources: GA4 · Ahrefs · CRM / Dashboard · SharePoint &nbsp;·&nbsp;
+  Reporting period: 1–31 March 2026 &nbsp;·&nbsp;
+  Prepared by: Orient Software Digital Marketing Team &nbsp;·&nbsp;
+  Next review: End of April 2026
+</div>
+</div><!-- /page -->
+
+<script>
+Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+Chart.defaults.color = '#667085';
+const gridColor = '#F2F4F7';
+
+const months3 = ['Jan 2026','Feb 2026','Mar 2026'];
+const users3   = [6629, 3286, 4486];
+const leads3   = [27, 31, 19];
+
+// Combined: Users bar + Leads line — 6 months shown
+// Jan–Dec 2026 full year
+const mo12 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const users12 = [6629, 3286, 4486, null, null, null, null, null, null, null, null, null];
+const leads12 = [27, 31, 19, null, null, null, null, null, null, null, null, null];
+
+new Chart(document.getElementById('ch-combined'), {
+  type: 'bar',
+  data: {
+    labels: mo12,
+    datasets: [
+      {
+        label: 'Total Users',
+        data: users12,
+        backgroundColor: 'rgba(14,116,144,0.7)',
+        hoverBackgroundColor: '#0E7490',
+        borderRadius: 5,
+        barPercentage: 0.55,
+        yAxisID: 'y',
+        order: 2,
+      },
+      {
+        label: 'Leads Generated',
+        data: leads12,
+        type: 'line',
+        borderColor: '#BE3B3B',
+        backgroundColor: 'transparent',
+        fill: false,
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        pointBackgroundColor: '#BE3B3B',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        tension: 0.35,
+        yAxisID: 'y2',
+        order: 1,
+        spanGaps: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#fff',
+        borderColor: '#E4E7EC',
+        borderWidth: 1,
+        titleColor: '#101828',
+        bodyColor: '#667085',
+        titleFont: { size: 12, weight: '600' },
+        bodyFont: { size: 12 },
+        padding: 12,
+        cornerRadius: 8,
+        boxPadding: 5,
+        callbacks: {
+          title: ctx => ctx[0].label + ' 2026',
+          label: ctx => {
+            if (ctx.raw === null) return null;
+            if (ctx.dataset.label === 'Total Users')
+              return '  Total Users: ' + ctx.raw.toLocaleString();
+            if (ctx.dataset.label === 'Leads Generated')
+              return '  Leads Generated: ' + ctx.raw;
+            return null;
+          },
+          labelColor: ctx => ({
+            borderColor: ctx.dataset.label === 'Total Users' ? '#0E7490' : '#BE3B3B',
+            backgroundColor: ctx.dataset.label === 'Total Users' ? '#0E7490' : '#BE3B3B',
+            borderRadius: 3
+          }),
+          filter: item => item.raw !== null,
+        }
+      }
+    },
+    animation: { duration: 900, easing: 'easeOutQuart' },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9CA3AF' } },
+      y: {
+        position: 'left', grid: { color: '#F2F4F7' },
+        ticks: { font: { size: 10 }, color: '#9CA3AF',
+          callback: v => v >= 1000 ? (v/1000).toFixed(0)+'k' : v }
+      },
+      y2: {
+        position: 'right', grid: { drawOnChartArea: false },
+        min: 0, max: 60,
+        ticks: { font: { size: 10 }, color: '#BE3B3B',
+          callback: v => Number.isInteger(v) ? v : '' },
+        title: { display: true, text: 'Leads', color: '#BE3B3B', font: { size: 10 } }
+      }
+    }
+  }
+});
+
+// Monthly users bar
+new Chart(document.getElementById('ch-mu'), {
+  type: 'bar',
+  data: { labels: months3, datasets: [{ data: users3,
+    backgroundColor: ['rgba(14,116,144,.9)','rgba(14,116,144,.6)','rgba(14,116,144,.4)'],
+    borderRadius: 5, barPercentage: 0.5 }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } }, animation: { duration: 800 },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9CA3AF' } },
+      y: { grid: { color: '#F2F4F7' }, ticks: { font: { size: 10 }, color: '#9CA3AF',
+        callback: v => v >= 1000 ? (v/1000).toFixed(0)+'k' : v } }
+    }
+  }
+});
+
+// Monthly leads bar
+new Chart(document.getElementById('ch-ml'), {
+  type: 'bar',
+  data: { labels: months3, datasets: [{ data: leads3,
+    backgroundColor: ['rgba(5,150,105,.9)','rgba(5,150,105,.7)','rgba(5,150,105,.4)'],
+    borderRadius: 5, barPercentage: 0.5 }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } }, animation: { duration: 800 },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9CA3AF' } },
+      y: { grid: { color: '#F2F4F7' }, ticks: { font: { size: 10 }, color: '#9CA3AF' } }
+    }
+  }
+});
+
+// Donut — sources
+new Chart(document.getElementById('ch-donut'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Organic Search','Direct','Organic Social','Referral','Unassigned','Email'],
+    datasets: [{
+      data: [42.4, 33.2, 16.9, 5.6, 5.1, 0.02],
+      backgroundColor: ['#7C3AED','#0E7490','#059669','#F97316','#94A3B8','#EAB308'],
+      borderWidth: 3,
+      borderColor: '#fff',
+      hoverOffset: 8,
+    }]
+  },
+  options: {
+    responsive: false, cutout: '60%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+    },
+    animation: { animateRotate: true, duration: 1000, easing: 'easeOutQuart' }
+  }
+});
+
+// Monthly users bar
+</script>
+</body>
+</html>
