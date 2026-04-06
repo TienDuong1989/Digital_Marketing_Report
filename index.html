@@ -390,7 +390,7 @@ function checkPw(){
     <span class="sec-count">2 of 2 published</span>
   </div>
 
-  <div class="report-grid" style="grid-template-columns:1fr 1fr; max-width:860px;">
+  <div class="report-grid" style="grid-template-columns: repeat(3, 1fr);">
 
     <!-- March — LIVE -->
     <a class="rcard" href="2026/March/">
@@ -426,8 +426,8 @@ function checkPw(){
       </div>
     </a>
 
-    <!-- Q1 Summary — same row -->
-    <a class="rcard rcard-quarter" href="2026/Q1/" style="text-decoration:none">
+    <!-- Q1 Summary — spans 2 columns to fill row -->
+    <a class="rcard rcard-quarter" href="2026/Q1/" style="text-decoration:none; grid-column: span 2;">
       <div class="rcard-top">
         <div class="rcard-icon ic-quarter">📋</div>
         <span class="rcard-badge b-quarter">✓ Q1 Summary</span>
@@ -437,7 +437,7 @@ function checkPw(){
         <div class="rcard-period">Jan · Feb · Mar · 82 total leads · $3,040.60 spent</div>
         <div class="rcard-metrics">
           <div class="rm">
-            <div class="rm-val">14,401</div>
+            <div class="rm-val">13,962</div>
             <div class="rm-label">Total Users Q1</div>
           </div>
           <div class="rm">
@@ -445,7 +445,7 @@ function checkPw(){
             <div class="rm-label">Total Leads Q1</div>
           </div>
           <div class="rm">
-            <div class="rm-val">0.57%</div>
+            <div class="rm-val">0.59%</div>
             <div class="rm-label">Avg CVR Q1</div>
           </div>
           <div class="rm">
