@@ -177,6 +177,13 @@ table.budget{width:100%;border-collapse:collapse;font-size:12px}
 
 /* ═══ FOOTER ═══ */
 .footer{text-align:center;font-size:10.5px;color:var(--muted);padding:20px 0 0;font-style:italic}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{display:flex;align-items:center;gap:0}
+.bc-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;padding:0;white-space:nowrap}
+.bc-item:hover{color:var(--teal)}
+.bc-item.bc-current{color:var(--text2);font-weight:600;pointer-events:none}
+.bc-sep{margin:0 6px;color:#D0D5DD;font-size:12px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -219,15 +226,18 @@ function checkPw(){var v=document.getElementById('pw-input').value;if(v==='@Orie
 <!-- ══ TOPBAR ══ -->
 <div class="topbar">
   <div class="tb-left">
-    <div style="background:transparent;padding:0;display:flex;align-items:center;gap:7px;width:auto;height:auto;border-radius:0">
+    <div style="display:flex;align-items:center;gap:7px;flex-shrink:0">
       <span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#E8321A;flex-shrink:0"></span>
       <span style="font-size:14px;font-weight:700;color:#0D1B2E;letter-spacing:-.01em">Orient Software</span>
     </div>
     <div class="tb-sep"></div>
-    <a href="../../" title="Digital Marketing Report Hub" style="display:flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color .15s" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--muted)'">
-      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L7 2l5.5 5M2.5 6v5.5h3v-3.5h3v3.5h3V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Quarterly Report
-    </a>
+    <nav class="breadcrumb">
+      <a class="bc-item" href="../../" title="Digital Marketing Report Hub"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L7 2l5.5 5M2.5 6v5.5h3v-3.5h3v3.5h3V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <span class="bc-sep">›</span>
+      <a class="bc-item" href="../../">Digital Marketing</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-item bc-current">Quarterly Report — Q1 2026</span>
+    </nav>
   </div>
   <div class="tb-right">
     <div class="tb-period">
@@ -788,7 +798,7 @@ function checkPw(){var v=document.getElementById('pw-input').value;if(v==='@Orie
           <div style="width:130px;display:flex;align-items:center;justify-content:flex-end;gap:6px">
             <span style="font-size:15px;font-weight:800;color:var(--navy)">82</span>
           </div>
-          <span style="font-size:12px;font-weight:700;color:#0E7490;min-width:46px;text-align:right">0.57%</span>
+          <span style="font-size:12px;font-weight:700;color:#0E7490;min-width:46px;text-align:right">0.59%</span>
           <span style="font-size:12px;color:var(--muted);min-width:60px;text-align:right">48.6% avg</span>
         </div>
 
