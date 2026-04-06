@@ -232,6 +232,13 @@ td.center{text-align:center}
   .grid2,.grid2-wide,.grid3{grid-template-columns:1fr}
   .sources-layout{grid-template-columns:1fr}
 }
+
+/* ── BREADCRUMB ── */
+.breadcrumb{display:flex;align-items:center;gap:0}
+.bc-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;padding:0;white-space:nowrap}
+.bc-item:hover{color:var(--teal)}
+.bc-item.bc-current{color:var(--text2);font-weight:600;pointer-events:none}
+.bc-sep{margin:0 6px;color:#D0D5DD;font-size:12px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -329,15 +336,18 @@ function checkPw(){
 <!-- ══ TOPBAR ══ -->
 <div class="topbar">
   <div class="tb-left">
-    <div class="tb-logo" style="background:transparent;padding:0;display:flex;align-items:center;gap:7px;width:auto;height:auto;border-radius:0">
+    <div style="display:flex;align-items:center;gap:7px;flex-shrink:0">
       <span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#E8321A;flex-shrink:0"></span>
       <span style="font-size:14px;font-weight:700;color:#0D1B2E;letter-spacing:-.01em">Orient Software</span>
     </div>
     <div class="tb-sep"></div>
-    <a href="../../" title="Digital Marketing Report Hub" style="display:flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;transition:color .15s" onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--muted)'">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L7 2l5.5 5M2.5 6v5.5h3v-3.5h3v3.5h3V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Monthly Report
-    </a>
+    <nav class="breadcrumb">
+      <a class="bc-item" href="../../" title="Digital Marketing Report Hub"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7L7 2l5.5 5M2.5 6v5.5h3v-3.5h3v3.5h3V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <span class="bc-sep">›</span>
+      <a class="bc-item" href="../../">Digital Marketing</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-item bc-current">Monthly Report — March</span>
+    </nav>
   </div>
   <div class="tb-right">
     <div class="tb-period">
@@ -357,7 +367,7 @@ function checkPw(){
 <!-- ══ ALERT ══ -->
 <div class="alert">
   <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M7.5 1.5L13.5 13H1.5L7.5 1.5Z" stroke="#F59E0B" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 5.5v4" stroke="#F59E0B" stroke-width="1.4" stroke-linecap="round"/><circle cx="7.5" cy="11.2" r=".8" fill="#F59E0B"/></svg>
-  <p><strong>Google March 2026 Core Update — 27 Mar 2026:</strong> Topical authority penalty caused traffic &amp; lead drop. Actions taken: ~50 posts removed/redirected (16–27 Mar) · Full site review completed (12–18 Mar) · Brand keywords → <strong>Top 1</strong>. Recovery expected Q2 2026.</p>
+  <p><strong>February 2026 Discover Update (completed 27 Feb):</strong> Root cause of March traffic &amp; lead drop — topical authority penalty + local relevance. Actions taken: ~50 posts removed/redirected (16–27 Mar) · Full site review completed (12–18 Mar) · Brand keywords → <strong>Top 1</strong>. Recovery expected Q2 2026. &nbsp;|&nbsp; <strong>Google March 2026 Core Update (started 27 Mar):</strong> Currently ongoing — monitoring closely. Full impact to be assessed once rollout completes.</p>
 </div>
 
 <!-- ══ ALL CHANNELS ══ -->
@@ -387,16 +397,16 @@ function checkPw(){
 
   <div class="mcard" style="padding:22px 24px">
     <div class="mcard-label">Leads Generated / mo <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
-    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">19</div>
+    <div class="mcard-val" style="font-size:36px;margin:6px 0 4px">20</div>
     <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-      <span style="color:#B42318;font-size:13px;font-weight:600">↓ 38.7% vs Feb (31)</span>
+      <span style="color:#B42318;font-size:13px;font-weight:600">↓ 35.5% vs Feb (31)</span>
     </div>
     <div style="margin-top:10px;height:4px;background:#F2F4F7;border-radius:4px;overflow:hidden">
-      <div style="width:59.4%;height:100%;background:linear-gradient(90deg,#B42318,#F97316);border-radius:4px"></div>
+      <div style="width:54.1%;height:100%;background:linear-gradient(90deg,#B42318,#F97316);border-radius:4px"></div>
     </div>
     <div style="display:flex;justify-content:space-between;margin-top:5px">
-      <span style="font-size:11px;color:#667085">Q2 target: 32/mo</span>
-      <span style="font-size:11px;font-weight:700;color:#B42318">59.4% achieved</span>
+      <span style="font-size:11px;color:#667085">Q2 target: 37/mo</span>
+      <span style="font-size:11px;font-weight:700;color:#B42318">54.1% achieved</span>
     </div>
   </div>
 </div>
@@ -452,14 +462,14 @@ function checkPw(){
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
   <div class="mcard" style="padding:18px 20px">
     <div class="mcard-label">Total Leads Q1 <span style="font-size:10px;color:#94A3B8;font-weight:400">(Dashboard)</span></div>
-    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">77</div>
-    <div style="color:#667085;font-size:12px;font-weight:600;margin-bottom:8px">Jan 27 · Feb 31 · Mar 19</div>
+    <div class="mcard-val" style="font-size:28px;margin:4px 0 3px">82</div>
+    <div style="color:#667085;font-size:12px;font-weight:600;margin-bottom:8px">Jan 31 · Feb 31 · Mar 20</div>
     <div style="height:3px;background:#F2F4F7;border-radius:4px;overflow:hidden;margin-bottom:5px">
-      <div style="width:75.3%;height:100%;background:#B45309;border-radius:4px"></div>
+      <div style="width:73.9%;height:100%;background:#B45309;border-radius:4px"></div>
     </div>
     <div style="display:flex;justify-content:space-between">
-      <span style="font-size:10.5px;color:#667085">Q2 annualised ~97</span>
-      <span style="font-size:10.5px;font-weight:700;color:#B45309">79.4%</span>
+      <span style="font-size:10.5px;color:#667085">Q2 target: ~111</span>
+      <span style="font-size:10.5px;font-weight:700;color:#B45309">73.9%</span>
     </div>
   </div>
 
@@ -617,8 +627,8 @@ function checkPw(){
           <td><div class="src-name"><span class="src-dot" style="background:#7C3AED"></span>Organic Search</div></td>
           <td class="num">1,892</td>
           <td class="num">3,034</td>
-          <td class="num" style="font-weight:700;color:#027A48">9</td>
-          <td class="num" style="font-weight:600;color:#027A48">0.48%</td>
+          <td class="num" style="font-weight:700;color:#027A48">10</td>
+          <td class="num" style="font-weight:600;color:#027A48">0.53%</td>
           <td class="num-muted">55%</td>
         </tr>
         <tr>
@@ -644,8 +654,8 @@ function checkPw(){
           <td><div class="src-name"><span class="src-dot" style="background:#F97316"></span>Referral</div></td>
           <td class="num">284</td>
           <td class="num">440</td>
-          <td class="num">3</td>
-          <td class="num-muted">1.06%</td>
+          <td class="num" style="font-weight:700;color:#027A48">5</td>
+          <td class="num" style="font-weight:600;color:#027A48">1.76%</td>
           <td class="num-muted">48%</td>
         </tr>
         <tr>
@@ -670,8 +680,8 @@ function checkPw(){
           <td colspan="2" style="font-weight:700;color:#0D1B2E">Total</td>
           <td class="num" style="font-weight:700;color:#0E7490">4,486</td>
           <td class="num" style="color:#667085">7,244</td>
-          <td class="num" style="font-weight:700;color:#027A48">19</td>
-          <td class="num" style="font-weight:700;color:#027A48">0.42%</td>
+          <td class="num" style="font-weight:700;color:#027A48">20</td>
+          <td class="num" style="font-weight:700;color:#027A48">0.45%</td>
           <td class="num" style="font-weight:600;color:#0D1B2E">46.6% avg</td>
         </tr>
       </tbody>
@@ -683,12 +693,12 @@ function checkPw(){
 <!-- ══ CPL CARD ══ -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
 
-  <!-- Where do 15 leads come from -->
+  <!-- Where do 19 leads come from -->
   <div class="card">
     <div class="card-hdr">
       <div>
-        <div class="card-title">Where do the 19 leads come from? · March 2026</div>
-        <div class="card-sub">Leads breakdown by traffic source · Source: GA4 Key Events mapped to CRM</div>
+        <div class="card-title">Where do the 20 leads come from? · March 2026</div>
+        <div class="card-sub">Leads breakdown by traffic source · Source: Dashboard / CRM</div>
       </div>
     </div>
     <div class="card-body" style="padding-top:10px">
@@ -696,35 +706,35 @@ function checkPw(){
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
           <span style="width:9px;height:9px;border-radius:50%;background:#7C3AED;flex-shrink:0;display:inline-block"></span>
           <span style="font-size:12px;color:#344054;flex:1">Organic Search</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:46.7%;height:100%;background:#7C3AED;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#7C3AED;min-width:20px;text-align:right">7</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">46.7%</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:50%;height:100%;background:#7C3AED;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#7C3AED;min-width:20px;text-align:right">10</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">50.0%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
-          <span style="width:9px;height:9px;border-radius:50%;background:#059669;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:12px;color:#344054;flex:1">Organic Social</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:26.7%;height:100%;background:#059669;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#059669;min-width:20px;text-align:right">4</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">26.7%</span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#F97316;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Referral</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:25%;height:100%;background:#F97316;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#F97316;min-width:20px;text-align:right">5</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">25.0%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F2F4F7">
           <span style="width:9px;height:9px;border-radius:50%;background:#0E7490;flex-shrink:0;display:inline-block"></span>
           <span style="font-size:12px;color:#344054;flex:1">Direct</span>
           <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:20%;height:100%;background:#0E7490;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#0E7490;min-width:20px;text-align:right">3</span>
+          <span style="font-size:13px;font-weight:700;color:#0E7490;min-width:20px;text-align:right">4</span>
           <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">20.0%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0">
-          <span style="width:9px;height:9px;border-radius:50%;background:#F97316;flex-shrink:0;display:inline-block"></span>
-          <span style="font-size:12px;color:#344054;flex:1">Referral</span>
-          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:6.7%;height:100%;background:#F97316;border-radius:4px"></div></div>
-          <span style="font-size:13px;font-weight:700;color:#F97316;min-width:20px;text-align:right">1</span>
-          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">6.7%</span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#059669;flex-shrink:0;display:inline-block"></span>
+          <span style="font-size:12px;color:#344054;flex:1">Organic Social</span>
+          <div style="width:120px;height:6px;background:#F2F4F7;border-radius:4px;overflow:hidden"><div style="width:5%;height:100%;background:#059669;border-radius:4px"></div></div>
+          <span style="font-size:13px;font-weight:700;color:#059669;min-width:20px;text-align:right">1</span>
+          <span style="font-size:11px;color:#667085;min-width:38px;text-align:right">5.0%</span>
         </div>
       </div>
       <div style="margin-top:12px;padding:10px 12px;background:#F0FDF4;border-radius:8px;border-left:3px solid #059669">
         <div style="font-size:11.5px;color:#014737;font-weight:600">📌 Key insight</div>
-        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Organic Search delivers most leads (7) — SEO recovery directly impacts pipeline. Organic Social converting well (4 leads from 723 users = 0.55% CVR). Priority: recover organic traffic first.</div>
+        <div style="font-size:11px;color:#065F46;margin-top:3px;line-height:1.5">Organic Search top source (10 leads · 50%) — SEO recovery directly impacts pipeline. Referral CVR highest at 1.76% (5 leads from 284 users) — validates link building investment. Diversify paid channels in Q2.</div>
       </div>
     </div>
   </div>
@@ -741,8 +751,8 @@ function checkPw(){
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
         <div style="text-align:center;padding:12px;background:#F8FAFC;border-radius:8px;border:1px solid #E4E7EC">
           <div style="font-size:10px;font-weight:600;color:#667085;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">January</div>
-          <div style="font-size:22px;font-weight:700;color:#0D1B2E">0.407%</div>
-          <div style="font-size:10px;color:#667085;margin-top:2px">27 leads ÷ 6,629 users</div>
+          <div style="font-size:22px;font-weight:700;color:#0D1B2E">0.47%</div>
+          <div style="font-size:10px;color:#667085;margin-top:2px">31 leads ÷ 6,629 users</div>
           <div style="font-size:11px;font-weight:600;color:#0E7490;margin-top:4px">Baseline month</div>
         </div>
         <div style="text-align:center;padding:12px;background:#F0FDF4;border-radius:8px;border:1px solid #BBF7D0">
@@ -753,25 +763,25 @@ function checkPw(){
         </div>
         <div style="text-align:center;padding:12px;background:#FEF2F2;border-radius:8px;border:1px solid #FECACA">
           <div style="font-size:10px;font-weight:600;color:#667085;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">March</div>
-          <div style="font-size:22px;font-weight:700;color:#B42318">0.42%</div>
-          <div style="font-size:10px;color:#667085;margin-top:2px">19 leads ÷ 4,486 users</div>
+          <div style="font-size:22px;font-weight:700;color:#B42318">0.45%</div>
+          <div style="font-size:10px;color:#667085;margin-top:2px">20 leads ÷ 4,486 users</div>
           <div style="font-size:11px;font-weight:600;color:#B42318;margin-top:4px">↓ vs Feb (0.943%)</div>
         </div>
       </div>
       <div style="background:#0D1B2E;border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
         <div>
           <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px">Q1 Average CVR</div>
-          <div style="font-size:24px;font-weight:700;color:#fff">0.535%</div>
-          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">77 leads ÷ 14,401 total users</div>
+          <div style="font-size:24px;font-weight:700;color:#fff">0.59%</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">82 leads ÷ 14,401 total users</div>
         </div>
         <div style="text-align:right">
           <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px">Q2 Target CVR</div>
           <div style="font-size:24px;font-weight:700;color:#22D3EE">0.402%</div>
-          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">32 leads ÷ 7,955 target users</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.5);margin-top:2px">37 leads ÷ 7,955 target users</div>
         </div>
       </div>
       <div style="margin-top:10px;padding:9px 12px;background:#FFFBEB;border-radius:8px;border-left:3px solid #F59E0B">
-        <div style="font-size:11px;color:#78350F;line-height:1.5">⚠ Feb CVR spike (0.943%) due to traffic drop — fewer users but leads held. Mar CVR (0.379%) dropped as Core Update cut both traffic and leads. Q2 goal: restore traffic to 7,955+ users to hit CVR ~0.40%.</div>
+        <div style="font-size:11px;color:#78350F;line-height:1.5">⚠ Feb CVR spike (0.94%) due to traffic drop — fewer but more intent-driven users. Mar CVR (0.42%) dropped as Feb Discover Update impact carried into March, cutting both traffic and leads. Q2 goal: restore traffic to 7,955+ users and diversify channels to reach 37 leads/mo (CVR ~0.47% baseline).</div>
       </div>
     </div>
   </div>
@@ -780,8 +790,8 @@ function checkPw(){
 
 <!-- ══ RECOVERY PLAN ══ -->
 <div class="section-gap"></div>
-<div class="section-title">Recovery Plan · Post Google Core Update</div>
-<div class="section-sub">Root cause: Topical Authority Penalty → 3 levers to fix</div>
+<div class="section-title">Recovery Plan · Post February 2026 Discover Update</div>
+<div class="section-sub">Root cause: February 2026 Discover Update (completed 27 Feb) → Topical Authority Penalty · 3 levers to fix</div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;margin-top:10px">
 
   <!-- What happened + what we did -->
@@ -790,8 +800,12 @@ function checkPw(){
     <div class="card-body" style="padding-top:10px">
       <div style="display:flex;flex-direction:column;gap:6px">
         <div style="padding:10px 12px;background:#FEF2F2;border-radius:8px;border-left:3px solid #DC2626;margin-bottom:4px">
-          <div style="font-size:11.5px;font-weight:600;color:#7F1D1D">Google March 2026 Core Update — 27 Mar 2026</div>
+          <div style="font-size:11.5px;font-weight:600;color:#7F1D1D">February 2026 Discover Update — completed 27 Feb 2026</div>
           <div style="font-size:11px;color:#991B1B;margin-top:4px;line-height:1.5">3 causes: Local Relevance · Topical Authority Penalty (main) · Reducing clickbait content</div>
+        </div>
+        <div style="padding:10px 12px;background:#FEF3C7;border-radius:8px;border-left:3px solid #F59E0B;margin-bottom:4px">
+          <div style="font-size:11.5px;font-weight:600;color:#78350F">⚠️ Google March 2026 Core Update — started 27 Mar 2026</div>
+          <div style="font-size:11px;color:#92400E;margin-top:4px;line-height:1.5">Currently ongoing — monitoring closely. Impact assessment pending rollout completion.</div>
         </div>
         <div style="display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #F2F4F7">
           <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;flex-shrink:0">✓</span>
@@ -838,7 +852,7 @@ function checkPw(){
           </div>
           <div>
             <div style="font-size:12px;font-weight:600;color:#344054">May 2026 — New website live (21 May)</div>
-            <div style="font-size:11px;color:#667085;margin-top:2px">13 core landing pages · Target: ~16,500 users/mo · CPL ↓</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">13 core landing pages · Target: 18,000 users/mo · 13 core service pages</div>
           </div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start">
@@ -846,8 +860,8 @@ function checkPw(){
             <span style="width:6px;height:6px;border-radius:50%;background:#059669;display:block"></span>
           </div>
           <div>
-            <div style="font-size:12px;font-weight:600;color:#344054">Jun 2026 — Q2 target: 7,955 users · 32 leads/mo</div>
-            <div style="font-size:11px;color:#667085;margin-top:2px">LinkedIn Ads + Microsoft Ads running · PR links boosting DR to 65</div>
+            <div style="font-size:12px;font-weight:600;color:#344054">Jun 2026 — Q2 target: 7,955 users · 37 leads/mo</div>
+            <div style="font-size:11px;color:#667085;margin-top:2px">Digital Strategy Q2: multi-source leads · LinkedIn + MS Ads (pending strategy) · GoodFirms Under Review</div>
           </div>
         </div>
       </div>
@@ -882,31 +896,31 @@ function checkPw(){
       </tr>
       <tr>
         <td><strong>LinkedIn Ads (Company Page — MOF/BOF)</strong></td>
-        <td>15 Apr</td><td>15 May</td>
-        <td style="color:#667085;font-size:11px">5 leads/mo · Image + Carousel + Lead Gen Forms</td>
+        <td>TBD</td><td>TBD</td>
+        <td style="color:#667085;font-size:11px">5 leads/mo · Image + Carousel + Lead Gen Forms · Pending Q2 strategy approval</td>
         <td>$1,000/mo</td><td style="color:#667085">Digital Lead</td>
-        <td><span class="sb s-b">🔵 In Progress</span></td>
+        <td><span class="sb s-a">🟠 On Hold</span></td>
       </tr>
       <tr>
         <td><strong>Microsoft Ads</strong></td>
-        <td>16 Apr</td><td>30 Apr</td>
-        <td style="color:#667085;font-size:11px">5 leads/mo · Account setup in progress with partner</td>
+        <td>TBD</td><td>TBD</td>
+        <td style="color:#667085;font-size:11px">5 leads/mo · Account setup in progress · Pending Q2 strategy approval</td>
         <td>TBD</td><td style="color:#667085">Digital Lead</td>
-        <td><span class="sb s-b">🔵 In Progress</span></td>
+        <td><span class="sb s-a">🟠 On Hold</span></td>
       </tr>
       <tr>
         <td><strong>PR — Press Release (20th Anniversary)</strong></td>
-        <td>16 Apr</td><td>23 Apr</td>
+        <td>TBD</td><td>TBD</td>
         <td style="color:#667085;font-size:11px">235 quality backlinks · Brand awareness milestone</td>
-        <td>$3,710</td><td style="color:#667085">Digital / Content</td>
-        <td><span class="sb" style="background:#F0F4FF;color:#2C3E6B">📅 Planned</span></td>
+        <td>$4,000</td><td style="color:#667085">Digital / Content</td>
+        <td><span class="sb s-a">🟠 On Hold</span></td>
       </tr>
       <tr>
         <td><strong>B2B Top Lists (GoodFirms)</strong></td>
         <td>06 Apr</td><td>Annual</td>
         <td style="color:#667085;font-size:11px">Annual package · Authority + leads via GoodFirms listing</td>
         <td>$1,000/mo</td><td style="color:#667085">SEO / Digital Lead</td>
-        <td><span class="sb s-b">🔵 In Progress</span></td>
+        <td><span class="sb s-a">🟠 Under Review</span></td>
       </tr>
       <tr>
         <td><strong>Blog Topic Clusters (New Articles)</strong></td>
@@ -972,24 +986,24 @@ function checkPw(){
           </tr>
           <tr>
             <td><strong>PR — Press Release (20th Anniversary)</strong></td>
-            <td style="color:#667085">Branding</td><td style="color:#667085">16 Apr</td><td style="color:#667085">23 Apr</td>
+            <td style="color:#667085">Branding</td><td style="color:#667085">TBD</td><td style="color:#667085">TBD</td>
             <td class="num">$4,000</td><td style="color:#667085">Digital / Content</td>
             <td style="color:#667085;font-size:11px">235 quality links</td>
-            <td><span class="sb s-g">✅ Approved</span></td>
+            <td><span class="sb s-a">🟠 On Hold</span></td>
           </tr>
           <tr>
             <td><strong>Microsoft Ads</strong></td>
-            <td style="color:#667085">Conversion</td><td style="color:#667085">01 Apr</td><td style="color:#667085">30 Apr</td>
+            <td style="color:#667085">Conversion</td><td style="color:#667085">TBD</td><td style="color:#667085">TBD</td>
             <td class="num">TBD</td><td style="color:#667085">Digital Lead</td>
-            <td style="color:#667085;font-size:11px">5 leads/mo</td>
-            <td><span class="sb" style="background:#F0F4FF;color:#2C3E6B">📅 Planned</span></td>
+            <td style="color:#667085;font-size:11px">5 leads/mo · Pending Q2 strategy</td>
+            <td><span class="sb s-a">🟠 On Hold</span></td>
           </tr>
           <tr>
             <td><strong>Listing Campaign — GoodFirms</strong></td>
-            <td style="color:#667085">Conversion</td><td style="color:#667085">06 Apr</td><td style="color:#667085">06 May</td>
+            <td style="color:#667085">Conversion</td><td style="color:#667085">06 Apr</td><td style="color:#667085">Annual</td>
             <td class="num">$1,000/mo</td><td style="color:#667085">SEO</td>
             <td style="color:#667085;font-size:11px">Authority + leads</td>
-            <td><span class="sb s-g">✅ Running</span></td>
+            <td><span class="sb s-a">🟠 Under Review</span></td>
           </tr>
           <tr style="background:#F0F9FF">
             <td colspan="4"><strong style="color:#0D1B2E">Q2 Total Committed</strong>
@@ -1048,7 +1062,7 @@ function checkPw(){
           <td><strong>January 2026</strong></td>
           <td class="num">6,629</td>
           <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#0E7490"></div></div></td>
-          <td class="num">27</td>
+          <td class="num">31</td>
           <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#059669"></div></div></td>
           <td class="num-muted">—</td>
           <td class="trend-nt">— Baseline month</td>
@@ -1060,25 +1074,25 @@ function checkPw(){
           <td class="num">31</td>
           <td><div class="month-bar-wrap"><div class="month-bar" style="width:100%;background:#059669"></div></div></td>
           <td class="num-muted">—</td>
-          <td><span class="trend-up">↓ −42.7% users</span> <span style="color:var(--green);font-size:11px;font-weight:500">↑ +14.8% leads</span></td>
+          <td><span class="trend-up">↓ −50.4% users</span> <span style="color:var(--muted);font-size:11px;font-weight:500">→ 0% leads (held)</span></td>
         </tr>
         <tr>
           <td><strong>March 2026</strong></td>
           <td class="num">4,486</td>
           <td><div class="month-bar-wrap"><div class="month-bar" style="width:50%;background:#0E7490"></div></div></td>
-          <td class="num">19</td>
-          <td><div class="month-bar-wrap"><div class="month-bar" style="width:63%;background:#059669"></div></div></td>
+          <td class="num">20</td>
+          <td><div class="month-bar-wrap"><div class="month-bar" style="width:65%;background:#059669"></div></div></td>
           <td class="num-muted">46.6%</td>
-          <td><span class="trend-up">↑ +36.5% users &nbsp;↓ −38.7% leads</span></td>
+          <td><span class="trend-up">↑ +36.5% users &nbsp;↓ −35.5% leads</span></td>
         </tr>
         <tr style="background:#F0F9FF">
           <td><strong style="color:#0E7490">Q1 Total</strong></td>
           <td class="num" style="color:#0E7490;font-weight:700">14,401</td>
           <td></td>
-          <td class="num" style="color:#059669;font-weight:700">75 leads</td>
+          <td class="num" style="color:#059669;font-weight:700">82 leads</td>
           <td></td>
           <td class="num-muted">—</td>
-          <td style="font-size:11px;color:var(--muted)">Q2 target: 32/mo · ~97 cumulative</td>
+          <td style="font-size:11px;color:var(--muted)">Q2 target: 37/mo · ~111 cumulative</td>
         </tr>
       </tbody>
     </table>
@@ -1148,21 +1162,21 @@ function checkPw(){
 </tr>
 <tr>
   <td><span class="ftag fc">CONVERT</span></td>
-  <td>Leads Generated / mo</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">27</td>
-  <td><strong>32</strong></td><td>43</td><td>54</td>
-  <td><strong>19</strong></td>
-  <td style="text-align:center"><span class="pct-badge p-a">59.4%</span></td>
+  <td>Leads Generated / mo</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">31</td>
+  <td><strong>37</strong></td><td>43</td><td>54</td>
+  <td><strong>20</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-r">54.1%</span></td>
   <td><span class="sb s-a">⚠️ At Risk</span></td>
-  <td style="color:var(--muted);font-size:11px">Jan:27 · Feb:31 · Mar:19</td>
+  <td style="color:var(--muted);font-size:11px">Jan:31 · Feb:31 · Mar:20</td>
 </tr>
 <tr>
   <td><span class="ftag fc">CONVERT</span></td>
-  <td>Total Leads — Cumulative (Q1)</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">~81</td>
-  <td><strong>~97</strong></td><td>~162</td><td>—</td>
-  <td><strong>77</strong></td>
-  <td style="text-align:center"><span class="pct-badge p-a">79.4%</span></td>
-  <td><span class="sb s-g">✅ On Track</span></td>
-  <td style="color:var(--muted);font-size:11px">Q1 actual 75 vs Q2 annualised ~97</td>
+  <td>Total Leads Q1</td><td style="color:var(--muted);font-size:11px;white-space:nowrap">CRM / Dashboard</td><td style="color:var(--muted)">~93</td>
+  <td><strong>~111</strong></td><td>~162</td><td>—</td>
+  <td><strong>82</strong></td>
+  <td style="text-align:center"><span class="pct-badge p-a">73.9%</span></td>
+  <td><span class="sb s-a">⚠️ At Risk</span></td>
+  <td style="color:var(--muted);font-size:11px">Jan 31 · Feb 31 · Mar 20 · cumulative</td>
 </tr>
 <tr>
   <td><span class="ftag fau">AUTHORITY</span></td>
@@ -1381,13 +1395,13 @@ const gridColor = '#F2F4F7';
 
 const months3 = ['Jan 2026','Feb 2026','Mar 2026'];
 const users3   = [6629, 3286, 4278];
-const leads3   = [27, 31, 15];
+const leads3   = [31, 31, 20];
 
 // Combined: Users bar + Leads line — 6 months shown
 // Jan–Dec 2026 full year
 const mo12 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const users12 = [6629, 3286, 4278, null, null, null, null, null, null, null, null, null];
-const leads12 = [27, 31, 19, null, null, null, null, null, null, null, null, null];
+const leads12 = [31, 31, 20, null, null, null, null, null, null, null, null, null];
 
 new Chart(document.getElementById('ch-combined'), {
   type: 'bar',
