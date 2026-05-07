@@ -37,12 +37,36 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 
 /* ═══ TOPBAR ═══ */
 .topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.tb-left{display:flex;align-items:center;gap:12px}
+.tb-left{display:flex;align-items:center;gap:10px}
 .tb-sep{width:1px;height:20px;background:var(--border)}
 .tb-sub{font-size:12px;color:var(--muted);font-weight:500}
 .tb-right{display:flex;align-items:center;gap:10px}
-.tb-period{background:var(--faint);border:1px solid var(--border2);border-radius:6px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--text2);display:flex;align-items:center;gap:6px;}
-.tb-period svg{width:13px;height:13px;color:var(--muted)}
+/* Breadcrumb */
+.tb-breadcrumb{display:flex;align-items:center;gap:6px}
+.tb-breadcrumb a{font-size:12px;color:var(--muted);font-weight:500;text-decoration:none;transition:color .15s;}
+.tb-breadcrumb a:hover{color:var(--teal)}
+.tb-breadcrumb-sep{font-size:11px;color:#D0D5DD}
+.tb-breadcrumb-current{font-size:12px;color:var(--text2);font-weight:600}
+/* Period selector dropdown */
+.tb-period-wrap{position:relative}
+.tb-period{background:var(--faint);border:1px solid var(--border2);border-radius:6px;padding:5px 10px 5px 12px;font-size:12px;font-weight:500;color:var(--text2);display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;transition:border-color .15s;}
+.tb-period:hover{border-color:#9CA3AF}
+.tb-period svg.cal{width:13px;height:13px;color:var(--muted)}
+.tb-period-chevron{width:14px;height:14px;color:var(--muted);margin-left:2px;transition:transform .2s;}
+.tb-period-wrap.open .tb-period-chevron{transform:rotate(180deg)}
+.tb-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(16,24,40,.10);min-width:210px;overflow:hidden;z-index:200;}
+.tb-period-wrap.open .tb-dropdown{display:block}
+.tb-dd-group{padding:6px 0;border-bottom:1px solid var(--border)}
+.tb-dd-group:last-child{border-bottom:none}
+.tb-dd-label{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;padding:6px 14px 3px}
+.tb-dd-item{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;cursor:pointer;transition:background .1s;}
+.tb-dd-item:hover{background:var(--faint)}
+.tb-dd-item.active{color:var(--teal);font-weight:700;background:#F0FDFF}
+.tb-dd-item.disabled{color:#D0D5DD;cursor:default;pointer-events:none}
+.tb-dd-badge{font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px}
+.dd-b-live{background:var(--green-bg);color:var(--green)}
+.dd-b-q{background:#EDE9FE;color:#5B21B6}
+.dd-b-plan{background:#F2F4F7;color:var(--muted)}
 .tb-filter{background:var(--white);border:1px solid var(--border2);border-radius:6px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--text2);display:flex;align-items:center;gap:5px;cursor:default;}
 .tb-ai{background:linear-gradient(135deg,#0E7490,#1D4ED8);border:none;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;color:#fff;display:flex;align-items:center;gap:5px;cursor:default;}
 
@@ -216,25 +240,53 @@ function checkPw(){
 <!-- ══ TOPBAR ══ -->
 <div class="topbar">
   <div class="tb-left">
-    <div style="background:transparent;padding:0;display:flex;align-items:center;gap:7px">
+    <div style="display:flex;align-items:center;gap:7px">
       <span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#E8321A;flex-shrink:0"></span>
       <span style="font-size:14px;font-weight:700;color:#0D1B2E;letter-spacing:-.01em">Orient Software</span>
     </div>
     <div class="tb-sep"></div>
-    <span class="tb-sub">Digital Marketing Report</span>
+    <nav class="tb-breadcrumb">
+      <a href="../../">Digital Marketing</a>
+      <span class="tb-breadcrumb-sep">›</span>
+      <a href="../">2026</a>
+      <span class="tb-breadcrumb-sep">›</span>
+      <span class="tb-breadcrumb-current">April 2026</span>
+    </nav>
   </div>
   <div class="tb-right">
-    <div class="tb-period">
-      <svg viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2.5" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 1.5v2M8.5 1.5v2M1.5 5.5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      April 2026
-    </div>
-    <div class="tb-filter">
-      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 3.5h10M3.5 6.5h6M5.5 9.5h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      Filter
+    <!-- Period selector dropdown -->
+    <div class="tb-period-wrap" id="periodWrap">
+      <div class="tb-period" onclick="toggleDropdown()">
+        <svg class="cal" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="2.5" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 1.5v2M8.5 1.5v2M1.5 5.5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        April 2026
+        <svg class="tb-period-chevron" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="tb-dropdown">
+        <div class="tb-dd-group">
+          <div class="tb-dd-label">Q1 2026</div>
+          <a class="tb-dd-item" href="../../March/">March 2026 <span class="tb-dd-badge dd-b-live">Published</span></a>
+          <a class="tb-dd-item" href="../../Q1/">Q1 Summary <span class="tb-dd-badge dd-b-q">Quarter</span></a>
+        </div>
+        <div class="tb-dd-group">
+          <div class="tb-dd-label">Q2 2026</div>
+          <a class="tb-dd-item active" href="#">April 2026 <span class="tb-dd-badge dd-b-live">Current</span></a>
+          <span class="tb-dd-item disabled">May 2026 <span class="tb-dd-badge dd-b-plan">Planned</span></span>
+          <span class="tb-dd-item disabled">June 2026 <span class="tb-dd-badge dd-b-plan">Planned</span></span>
+        </div>
+      </div>
     </div>
     <div class="tb-ai">✦ AI Insights</div>
   </div>
 </div>
+<script>
+function toggleDropdown(){
+  document.getElementById('periodWrap').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var wrap=document.getElementById('periodWrap');
+  if(wrap && !wrap.contains(e.target)) wrap.classList.remove('open');
+});
+</script>
 
 <div class="page">
 
